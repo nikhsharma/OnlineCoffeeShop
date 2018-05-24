@@ -5,15 +5,16 @@ public abstract class Stock {
 
     private int id;
     private double price;
-    private int quanity;
+    private int quantity;
     private Boolean available;
+
 
     public Stock() {
     }
 
-    public Stock(double price, int quanity) {
+    public Stock(double price, int quantity) {
         this.price = price;
-        this.quanity = quanity;
+        this.quantity = quantity;
     }
 
     public int getId() {
@@ -33,11 +34,11 @@ public abstract class Stock {
     }
 
     public int getQuanity() {
-        return quanity;
+        return quantity;
     }
 
     public void setQuanity(int quanity) {
-        this.quanity = quanity;
+        this.quantity = quanity;
     }
 
     public Boolean getAvailable() {
