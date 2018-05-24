@@ -1,4 +1,11 @@
 package models.stock;
 
-public class CoffeeType {
+public enum CoffeeType {
+
+    JAVA,
+    UGANDA,
+    COLOMBIAN,
+    CHARRIER,
+    MOCHA;
+
 }
