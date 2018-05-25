@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Customer extends User {
-    private List<Stock> purchaseHistory;
+    private List<List<Stock>> purchaseHistory;
     private Basket basket;
 
     public Customer(String name, String username) {
@@ -20,11 +20,11 @@ public class Customer extends User {
     public Customer() {
     }
 
-    public List<Stock> getPurchaseHistory() {
+    public List<List<Stock>> getPurchaseHistory() {
         return purchaseHistory;
     }
 
-    public void setPurchaseHistory(List<Stock> purchaseHistory) {
+    public void setPurchaseHistory(List<List<Stock>> purchaseHistory) {
         this.purchaseHistory = purchaseHistory;
     }
 
@@ -46,5 +46,9 @@ public class Customer extends User {
 
     public void removeFromBasket(Stock stock) {
         this.basket.removeStock(stock);
+    }
+
+    public void purchase() {
+        this.purchaseHistory.add(this.basket.sell());
     }
 }

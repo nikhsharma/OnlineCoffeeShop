@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class CustomerTest {
 
@@ -27,6 +28,16 @@ public class CustomerTest {
     public void canRemoveItemFromCustomersBasket() {
         customer.addToBasket(misc);
         customer.removeFromBasket(misc);
+        assertEquals(0, customer.stockInBasketCount());
+    }
+
+    @Test
+    public void canBuyBasketContents() {
+        customer.addToBasket(misc);
+        customer.addToBasket(misc);
+        customer.purchase();
+        assertEquals(1, customer.getPurchaseHistory().size());
+        assertEquals(2, customer.getPurchaseHistory().get(0).size());
         assertEquals(0, customer.stockInBasketCount());
     }
 }
