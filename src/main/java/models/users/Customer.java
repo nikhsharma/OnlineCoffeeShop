@@ -6,13 +6,12 @@ import models.stock.Stock;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Customer {
+public class Customer extends User {
     private List<Stock> purchaseHistory;
-    private String username;
     private Basket basket;
 
-    public Customer(String username) {
-        this.username = username;
+    public Customer(String name, String username) {
+        super(name, username);
         this.basket = new Basket();
         this.purchaseHistory = new ArrayList<>();
     }
