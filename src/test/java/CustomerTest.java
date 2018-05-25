@@ -22,4 +22,11 @@ public class CustomerTest {
         customer.addToBasket(misc);
         assertEquals(1, customer.stockInBasketCount());
     }
+
+    @Test
+    public void canRemoveItemFromCustomersBasket() {
+        customer.addToBasket(misc);
+        customer.removeFromBasket(misc);
+        assertEquals(0, customer.stockInBasketCount());
+    }
 }

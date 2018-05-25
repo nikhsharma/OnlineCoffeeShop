@@ -43,4 +43,8 @@ public class Customer extends User {
     public void addToBasket(Stock stock) {
         this.basket.addStock(stock);
     }
+
+    public void removeFromBasket(Stock stock) {
+        this.basket.removeStock(stock);
+    }
 }
