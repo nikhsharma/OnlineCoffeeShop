@@ -1,7 +1,6 @@
 package models.users;
 
 import models.basket.Basket;
-import models.stock.Misc;
 import models.stock.Stock;
 
 import java.util.ArrayList;
@@ -40,8 +39,8 @@ public class Customer extends User {
         return this.basket.stockCount();
     }
 
-    public void addToBasket(Stock stock) {
-        this.basket.addStock(stock);
+    public void addToBasket(Stock stock, int quantity) {
+        this.basket.addStock(stock, quantity);
     }
 
     public void removeFromBasket(Stock stock) {
