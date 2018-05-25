@@ -38,9 +38,9 @@ public class Customer extends User {
     }
 
 
-//    public List<List<Stock>> getPurchaseHistory() {
-//        return purchaseHistory;
-//    }
+    public List<List<Stock>> getPurchaseHistory() {
+        return purchaseHistory;
+    }
 
     public void setPurchaseHistory(List<List<Stock>> purchaseHistory) {
         this.purchaseHistory = purchaseHistory;
