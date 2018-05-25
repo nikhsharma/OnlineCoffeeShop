@@ -3,6 +3,7 @@ package models.users;
 import models.basket.Basket;
 import models.stock.Stock;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
@@ -12,6 +13,8 @@ public class Customer {
 
     public Customer(String username) {
         this.username = username;
+        this.basket = new Basket();
+        this.purchaseHistory = new ArrayList<>();
     }
 
     public Customer() {
