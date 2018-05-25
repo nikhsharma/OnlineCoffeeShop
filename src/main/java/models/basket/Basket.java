@@ -1,6 +1,6 @@
 package models.basket;
 
-import models.stock.Misc;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import models.stock.Stock;
 
 import java.util.ArrayList;
@@ -37,11 +37,31 @@ public class Basket {
         return stock.size();
     }
 
-    public void addStock(Stock stock) {
-        this.stock.add(stock);
+    public void addStock(Stock stock, int quantity) {
+        this.stock.add(new Stock(stock.getDescription(), stock.getType(), stock.getPrice(), quantity));
+        stock.setQuantity(stock.getQuantity() - quantity);
     }
 
-    public void removeStock(Stock stock) {
-        this.stock.remove(stock);
+    public void removeStock(Stock originalStock) {
+        int quantity = 0;
+        ArrayList<Stock> copiedStock = new ArrayList<>(stock);
+        for (Stock item : copiedStock) {
+            if (originalStock.getDescription() == item.getDescription()) {
+                quantity =  item.getQuantity();
+                stock.remove(item);
+            }
+        }
+        originalStock.setQuantity(originalStock.getQuantity() + quantity);
+    }
+
+//    public void removeStock(Stock stock) {
+//
+////        this.stock.remove(stock);
+//    }
+
+    public List<Stock> sell() {
+        List<Stock> copy = new ArrayList<>(stock);
+        this.stock.clear();
+        return copy;
     }
 }

@@ -1,19 +1,24 @@
 package models.stock;
 
 
-public abstract class Stock {
+public class Stock {
 
     private int id;
+    private String description;
+    private StockType type;
     private double price;
-    private int quanity;
+    private int quantity;
     private Boolean available;
+
 
     public Stock() {
     }
 
-    public Stock(double price, int quanity) {
+    public Stock(String description, StockType type, double price, int quantity) {
+        this.description = description;
+        this.type = type;
         this.price = price;
-        this.quanity = quanity;
+        this.quantity = quantity;
     }
 
     public int getId() {
@@ -24,6 +29,22 @@ public abstract class Stock {
         this.id = id;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public StockType getType() {
+        return type;
+    }
+
+    public void setType(StockType type) {
+        this.type = type;
+    }
+
     public double getPrice() {
         return price;
     }
@@ -32,12 +53,12 @@ public abstract class Stock {
         this.price = price;
     }
 
-    public int getQuanity() {
-        return quanity;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQuanity(int quanity) {
-        this.quanity = quanity;
+    public void setQuantity(int quanity) {
+        this.quantity = quanity;
     }
 
     public Boolean getAvailable() {
