@@ -1,22 +1,34 @@
 package models.basket;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
+import com.sun.tools.javah.Gen;
 import models.stock.Stock;
 
+import models.users.Customer;
+import org.hibernate.Hibernate;
+import org.hibernate.annotations.Tables;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name="basket")
 public class Basket {
     private int id;
     private List<Stock> stock;
+    private Customer customer;
+
 
     public Basket() {
         this.stock = new ArrayList<>();
+        this.customer = new Customer();
     }
-//    Might need for Hibernate
-//    public Basket() {
-//    }
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -24,6 +36,12 @@ public class Basket {
     public void setId(int id) {
         this.id = id;
     }
+
+//    @ManyToMany(cascade = CascadeType.PERSIST)
+////    @JoinTable(name="basket_stock",
+////    inverseJoinColumns = {@JoinColumn(name="basket_id", nullable = false, updatable = false)},
+////    joinColumns = {@JoinColumn(name="stock_id", nullable = false, updatable = false)})
+    @OneToMany(mappedBy = "basket")
 
     public List<Stock> getStock() {
         return stock;
@@ -63,5 +81,14 @@ public class Basket {
         List<Stock> copy = new ArrayList<>(stock);
         this.stock.clear();
         return copy;
+    }
+
+    @OneToOne(mappedBy = "basket", cascade = CascadeType.PERSIST )
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

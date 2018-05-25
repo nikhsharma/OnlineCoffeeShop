@@ -1,6 +1,12 @@
 package models.stock;
 
 
+import models.basket.Basket;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="stock")
 public class Stock {
 
     private int id;
@@ -9,6 +15,7 @@ public class Stock {
     private double price;
     private int quantity;
     private Boolean available;
+    private Basket basket;
 
 
     public Stock() {
@@ -19,8 +26,12 @@ public class Stock {
         this.type = type;
         this.price = price;
         this.quantity = quantity;
-    }
+        this.basket = new Basket();
 
+    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -45,6 +56,7 @@ public class Stock {
         this.type = type;
     }
 
+    @Column(name="price")
     public double getPrice() {
         return price;
     }
@@ -57,8 +69,21 @@ public class Stock {
         return quantity;
     }
 
-    public void setQuantity(int quanity) {
-        this.quantity = quanity;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+//    @ManyToMany(cascade = CascadeType.PERSIST)
+//    @JoinTable(name = "basket_stock",
+//            inverseJoinColumns = {@JoinColumn(name = "stock_id", nullable = false, updatable = false)},
+//            joinColumns = {@JoinColumn(name = "basket_id", nullable = false, updatable = false)})
+    @ManyToOne
+    @JoinColumn(name="basket_id", nullable = true)
+    public Basket getBasket() {
+        return basket;
+    }
+
+    public void setBasket(Basket basket) {
+        this.basket = basket;
     }
 
     public Boolean getAvailable() {

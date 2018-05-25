@@ -1,5 +1,8 @@
 package models.users;
 
+import javax.persistence.*;
+
+
 public abstract class User {
     private int id;
     private String name;
@@ -12,6 +15,7 @@ public abstract class User {
 
     public User() {
     }
+
 
     public int getId() {
         return id;

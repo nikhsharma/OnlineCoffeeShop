@@ -3,15 +3,20 @@ package models.users;
 import models.basket.Basket;
 import models.stock.Stock;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "customer")
 public class Customer extends User {
+    private int id;
     private List<List<Stock>> purchaseHistory;
     private Basket basket;
 
     public Customer(String name, String username) {
         super(name, username);
+        this.id = id;
         this.basket = new Basket();
         this.purchaseHistory = new ArrayList<>();
     }
@@ -19,14 +24,29 @@ public class Customer extends User {
     public Customer() {
     }
 
-    public List<List<Stock>> getPurchaseHistory() {
-        return purchaseHistory;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
+    @Override
+    public int getId() {
+        return id;
     }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+//    public List<List<Stock>> getPurchaseHistory() {
+//        return purchaseHistory;
+//    }
 
     public void setPurchaseHistory(List<List<Stock>> purchaseHistory) {
         this.purchaseHistory = purchaseHistory;
     }
 
+    @OneToOne(cascade = CascadeType.ALL)
     public Basket getBasket() {
         return basket;
     }
