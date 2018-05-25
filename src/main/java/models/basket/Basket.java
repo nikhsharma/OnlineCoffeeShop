@@ -1,5 +1,6 @@
 package models.basket;
 
+import models.stock.Misc;
 import models.stock.Stock;
 
 import java.util.ArrayList;
@@ -38,5 +39,9 @@ public class Basket {
 
     public void addStock(Stock stock) {
         this.stock.add(stock);
+    }
+
+    public void removeStock(Stock stock) {
+        this.stock.remove(stock);
     }
 }

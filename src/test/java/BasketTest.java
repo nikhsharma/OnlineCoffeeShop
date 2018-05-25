@@ -21,4 +21,11 @@ public class BasketTest {
         basket.addStock(misc);
         assertEquals(1, basket.stockCount());
     }
+
+    @Test
+    public void canRemoveItemFromBasket() {
+        basket.addStock(misc);
+        basket.removeStock(misc);
+        assertEquals(0, basket.stockCount());
+    }
 }
