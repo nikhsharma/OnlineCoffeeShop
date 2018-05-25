@@ -46,7 +46,7 @@ public class Customer extends User {
         this.purchaseHistory = purchaseHistory;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(mappedBy ="customer", cascade = CascadeType.PERSIST)
     public Basket getBasket() {
         return basket;
     }
