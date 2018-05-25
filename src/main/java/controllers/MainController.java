@@ -14,6 +14,7 @@ public class MainController {
         Coffee coffee2 = new Coffee(5.00, 1 ,CoffeeType.JAVA, 250);
         DBHelper.save(coffee);
         DBHelper.save(coffee2);
+        DBHelper.delete(coffee);
         List<Coffee> savedCoffee = DBHelper.getAll(Coffee.class);
     }
 }

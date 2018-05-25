@@ -41,6 +41,7 @@ public class DBHelper {
     }
 
     public static <T> T find(Class classType, int id){
+        session = HibernateUtil.getSessionFactory().openSession();
         T result = null;
         try {
             Criteria cr = session.createCriteria(classType);
@@ -52,6 +53,20 @@ public class DBHelper {
             session.close();
         }
         return result;
+    }
+
+    public static void delete(Object object){
+        session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            transaction = session.beginTransaction();
+            session.delete(object);
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
     }
 
 
