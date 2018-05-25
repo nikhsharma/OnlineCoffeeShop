@@ -14,9 +14,6 @@
         <property name="hbm2ddl.auto">create</property>
         <property name="show_sql">true</property>
         <mapping class="models.stock.Stock"/>
-        <mapping class="models.stock.Coffee"/>
-        <mapping class="models.stock.Equipment"/>
-        <mapping class="models.stock.Misc"/>
         <mapping class="models.basket.Basket"/>
         <mapping class="models.users.Admin"/>
         <mapping class="models.users.Customer"/>
