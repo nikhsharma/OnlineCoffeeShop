@@ -14,6 +14,7 @@ public class MainController {
     public static void main(String[] args) {
 
         CoffeeController coffeeController = new CoffeeController();
+        EquipmentController equipmentController = new EquipmentController();
 
         get("/", (req, res) -> {
             HashMap<String, Object> model = new HashMap<>();
