@@ -54,11 +54,6 @@ public class Basket {
         originalStock.setQuantity(originalStock.getQuantity() + quantity);
     }
 
-//    public void removeStock(Stock stock) {
-//
-////        this.stock.remove(stock);
-//    }
-
     public List<Stock> sell() {
         List<Stock> copy = new ArrayList<>(stock);
         this.stock.clear();
