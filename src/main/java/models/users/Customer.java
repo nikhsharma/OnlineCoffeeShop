@@ -1,6 +1,7 @@
 package models.users;
 
 import models.basket.Basket;
+import models.stock.Misc;
 import models.stock.Stock;
 
 import java.util.ArrayList;
@@ -27,19 +28,19 @@ public class Customer extends User {
         this.purchaseHistory = purchaseHistory;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public Basket getBasket() {
         return basket;
     }
 
     public void setBasket(Basket basket) {
         this.basket = basket;
+    }
+
+    public int stockInBasketCount() {
+        return this.basket.stockCount();
+    }
+
+    public void addToBasket(Stock stock) {
+        this.basket.addStock(stock);
     }
 }
