@@ -1,6 +1,6 @@
 package models.stock;
 
-public class Coffee{
+public class Coffee extends Stock{
 
     private CoffeeType coffeeType;
     private int weight;
@@ -8,7 +8,8 @@ public class Coffee{
     public Coffee() {
     }
 
-    public Coffee(CoffeeType coffeeType, int weight) {
+    public Coffee(double price, int quantity, CoffeeType coffeeType, int weight) {
+        super(price, quantity);
         this.coffeeType = coffeeType;
         this.weight = weight;
     }
