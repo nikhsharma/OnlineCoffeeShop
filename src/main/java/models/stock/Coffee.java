@@ -1,6 +1,6 @@
 package models.stock;
 
-public class Coffee {
+public class Coffee{
 
     private CoffeeType coffeeType;
     private int weight;
