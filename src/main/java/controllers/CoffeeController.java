@@ -1,25 +1,25 @@
 package controllers;
 
-import db.DBHelper;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
 import java.util.HashMap;
-import java.util.List;
 
 import static spark.Spark.get;
 
-public class MainController {
+public class CoffeeController {
 
-    public static void main(String[] args) {
+    public CoffeeController() {
+        setUpEndPoints();
+    }
 
-        CoffeeController coffeeController = new CoffeeController();
-
-        get("/", (req, res) -> {
+    private void setUpEndPoints() {
+        get("/coffee", (req, res) -> {
             HashMap<String, Object> model = new HashMap<>();
-            model.put("template", "templates/main.vtl");
+            model.put("template", "templates/coffee/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
-
     }
+
+
 }
