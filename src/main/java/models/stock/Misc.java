@@ -5,8 +5,8 @@ public class Misc extends Stock {
     public Misc() {
     }
 
-    public Misc(double price, int quanity) {
-        super(price, quanity);
+    public Misc(double price, int quantity) {
+        super(price, quantity);
     }
 
 
