@@ -38,12 +38,12 @@ public class BasketTest {
         assertEquals(5, stock.getQuantity());
         assertEquals(4, stock2.getQuantity());
     }
-//
-//    @Test
-//    public void canSellBasketContents() {
-//        basket.addStock(stock);
-//        basket.addStock(stock);
-//        assertNotNull(basket.sell());
-//        assertEquals(0, basket.stockCount());
-//    }
+
+    @Test
+    public void canSellBasketContents() {
+        basket.addStock(stock, 2);
+        basket.addStock(stock2, 3);
+        assertNotNull(basket.sell());
+        assertEquals(0, basket.stockCount());
+    }
 }
