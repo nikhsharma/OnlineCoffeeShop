@@ -4,23 +4,34 @@ import models.basket.Basket;
 
 import javax.persistence.*;
 
-
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "users")
 public abstract class User {
+    private int id;
     private String name;
     private String username;
-    private Basket basket;
 
     public User(String name, String username) {
         this.name = name;
         this.username = username;
-        this.basket = basket;
-
     }
 
     public User() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -29,7 +40,7 @@ public abstract class User {
         this.name = name;
     }
 
-
+    @Column(name = "username")
     public String getUsername() {
         return username;
     }
@@ -37,7 +48,6 @@ public abstract class User {
     public void setUsername(String username) {
         this.username = username;
     }
-
 
 
 }

@@ -17,6 +17,6 @@
         <mapping class="models.basket.Basket"/>
         <mapping class="models.users.Admin"/>
         <mapping class="models.users.Customer"/>
-        <!--<mapping class="models.users.User"/>-->
+        <mapping class="models.users.User"/>
     </session-factory>
 </hibernate-configuration>

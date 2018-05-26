@@ -2,6 +2,7 @@ package db;
 
 import models.basket.Basket;
 import models.stock.Stock;
+import models.users.Customer;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -72,11 +73,10 @@ public class DBHelper {
         }
     }
 
-    public static void addStockToBasket(Stock stock, Basket basket) {
-        stock.addBasket(basket);
-
-        save(basket);
-
+    public static void addStockToBasket(Stock stock, Customer customer, int quantity) {
+        stock.addBasket(customer.getBasket());
+        customer.addToBasket(stock, quantity);
+        save(stock);
     }
 
 

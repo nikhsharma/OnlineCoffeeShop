@@ -1,5 +1,6 @@
 package models.users;
 
+import db.DBHelper;
 import models.basket.Basket;
 import models.stock.Stock;
 
@@ -8,41 +9,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "customer")
+@Table(name = "customers")
 public class Customer extends User {
-    private int id;
     private List<List<Stock>> purchaseHistory;
     private Basket basket;
 
-    public Customer(String name, String username, Basket basket) {
+    public Customer(String name, String username) {
         super(name, username);
-        this.id = id;
         this.basket = new Basket();
+        DBHelper.save(basket);
         this.purchaseHistory = new ArrayList<>();
     }
 
     public Customer() {
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-
-    public List<List<Stock>> getPurchaseHistory() {
-        return purchaseHistory;
-    }
-
-    public void setPurchaseHistory(List<List<Stock>> purchaseHistory) {
-        this.purchaseHistory = purchaseHistory;
-    }
+//    public List<List<Stock>> getPurchaseHistory() {
+//        return purchaseHistory;
+//    }
+//
+//    public void setPurchaseHistory(List<List<Stock>> purchaseHistory) {
+//        this.purchaseHistory = purchaseHistory;
+//    }
 
     @OneToOne(cascade = CascadeType.PERSIST)
     public Basket getBasket() {
