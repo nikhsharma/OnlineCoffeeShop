@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 @Table(name = "customers")
 public class Customer extends User {
-    private List<List<Stock>> purchaseHistory;
+    private ArrayList<ArrayList<Stock>> purchaseHistory;
     private Basket basket;
 
     public Customer(String name, String username) {
@@ -24,13 +24,14 @@ public class Customer extends User {
     public Customer() {
     }
 
-//    public List<List<Stock>> getPurchaseHistory() {
-//        return purchaseHistory;
-//    }
-//
-//    public void setPurchaseHistory(List<List<Stock>> purchaseHistory) {
-//        this.purchaseHistory = purchaseHistory;
-//    }
+    @Column(name = "purchaseHistory")
+    public ArrayList<ArrayList<Stock>> getPurchaseHistory() {
+        return purchaseHistory;
+    }
+
+    public void setPurchaseHistory(ArrayList<ArrayList<Stock>> purchaseHistory) {
+        this.purchaseHistory = purchaseHistory;
+    }
 
     @OneToOne(cascade = CascadeType.PERSIST)
     public Basket getBasket() {
@@ -46,7 +47,11 @@ public class Customer extends User {
     }
 
     public void addToBasket(Stock stock, int quantity) {
-        this.basket.addStock(stock, quantity);
+        Stock stockToAdd = new Stock(stock.getDescription(), stock.getType(), stock.getPrice(), quantity);
+        stockToAdd.setBasket(this.basket);
+        DBHelper.save(stockToAdd);
+        this.basket.addStock(stockToAdd);
+        stock.setQuantity(stock.getQuantity() - quantity);
     }
 
     public void removeFromBasket(Stock stock) {

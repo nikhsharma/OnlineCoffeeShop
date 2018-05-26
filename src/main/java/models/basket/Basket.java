@@ -2,6 +2,7 @@ package models.basket;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.sun.tools.javah.Gen;
+import db.DBHelper;
 import models.stock.Stock;
 
 import models.users.Customer;
@@ -36,11 +37,7 @@ public class Basket {
         this.id = id;
     }
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name="basket_stock",
-    inverseJoinColumns = {@JoinColumn(name="stock_id", nullable = false, updatable = false)},
-    joinColumns = {@JoinColumn(name="basket_id", nullable = false, updatable = false)})
-//    @OneToMany(mappedBy = "basket")
+    @OneToMany(mappedBy = "basket")
     public List<Stock> getStock() {
         return stock;
     }
@@ -53,9 +50,8 @@ public class Basket {
         return stock.size();
     }
 
-    public void addStock(Stock stock, int quantity) {
-        this.stock.add(new Stock(stock.getDescription(), stock.getType(), stock.getPrice(), quantity));
-        stock.setQuantity(stock.getQuantity() - quantity);
+    public void addStock(Stock stock) {
+        this.stock.add(stock);
     }
 
     public void removeStock(Stock originalStock) {
@@ -70,8 +66,8 @@ public class Basket {
         originalStock.setQuantity(originalStock.getQuantity() + quantity);
     }
 
-    public List<Stock> sell() {
-        List<Stock> copy = new ArrayList<>(stock);
+    public ArrayList<Stock> sell() {
+        ArrayList<Stock> copy = new ArrayList<>(stock);
         this.stock.clear();
         return copy;
     }

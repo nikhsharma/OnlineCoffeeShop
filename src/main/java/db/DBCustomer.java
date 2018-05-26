@@ -16,7 +16,7 @@ public class DBCustomer {
     private static Session session;
     private static Transaction transaction;
 
-    public List<Stock> showPurchaseHistory(Customer customer){
+    public static List<Stock> showPurchaseHistory(Customer customer){
         session = HibernateUtil.getSessionFactory().openSession();
         List<Stock> purchaseHistory = null;
         try {

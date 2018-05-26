@@ -74,9 +74,9 @@ public class DBHelper {
     }
 
     public static void addStockToBasket(Stock stock, Customer customer, int quantity) {
-        stock.addBasket(customer.getBasket());
         customer.addToBasket(stock, quantity);
         save(stock);
+        save(customer.getBasket());
     }
 
 

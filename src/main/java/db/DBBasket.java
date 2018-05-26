@@ -15,17 +15,18 @@ public class DBBasket {
     private static Transaction transaction;
 
 
-    public List<Stock> showStock(Basket basket){
+    public static List<Stock> showStock(Basket basket){
         session = HibernateUtil.getSessionFactory().openSession();
         List<Stock> stockInBasket = null;
         try {
             Criteria cr = session.createCriteria(Stock.class);
-            cr.add(Restrictions.eq("basket", basket));
+            cr.add(Restrictions.eq("basket.id", basket.getId()));
             stockInBasket = cr.list();
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
             session.close();
-        } return stockInBasket;
+        }
+        return stockInBasket;
     }
 }

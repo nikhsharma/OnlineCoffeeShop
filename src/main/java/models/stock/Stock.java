@@ -17,7 +17,7 @@ public class Stock {
     private double price;
     private int quantity;
     private Boolean available;
-    private Set<Basket> basket;
+    private Basket basket;
 
 
     public Stock() {
@@ -28,8 +28,7 @@ public class Stock {
         this.type = type;
         this.price = price;
         this.quantity = quantity;
-        this.basket = new HashSet<>();
-
+        this.basket = null;
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -74,22 +73,16 @@ public class Stock {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "basket_stock",
-            inverseJoinColumns = {@JoinColumn(name = "basket_id", nullable = false, updatable = false)},
-            joinColumns = {@JoinColumn(name = "stock_id", nullable = false, updatable = false)})
-//    @ManyToOne
-//    @JoinColumn(name="basket_id", nullable = false)
-    public Set<Basket> getBasket() {
+
+
+    @ManyToOne
+    @JoinColumn(name="basket_id")
+    public Basket getBasket() {
         return basket;
     }
 
-    public void setBasket(Set<Basket> basket) {
+    public void setBasket(Basket basket) {
         this.basket = basket;
-    }
-
-    public void addBasket(Basket basket){
-        this.basket.add(basket);
     }
 
     public Boolean getAvailable() {
