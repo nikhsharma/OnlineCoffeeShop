@@ -1,29 +1,25 @@
 package models.users;
 
+import models.basket.Basket;
+
 import javax.persistence.*;
 
 
 public abstract class User {
-    private int id;
     private String name;
     private String username;
+    private Basket basket;
 
     public User(String name, String username) {
         this.name = name;
         this.username = username;
+        this.basket = basket;
+
     }
 
     public User() {
     }
 
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -33,6 +29,7 @@ public abstract class User {
         this.name = name;
     }
 
+
     public String getUsername() {
         return username;
     }
@@ -40,4 +37,7 @@ public abstract class User {
     public void setUsername(String username) {
         this.username = username;
     }
+
+
+
 }

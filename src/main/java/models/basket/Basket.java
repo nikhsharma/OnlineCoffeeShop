@@ -15,10 +15,15 @@ import java.util.List;
 @Entity
 @Table(name="basket")
 public class Basket {
+
     private int id;
+    private int basketNumber;
     private List<Stock> stock;
     private Customer customer;
 
+//    public Basket(){
+//
+//    }
 
     public Basket() {
         this.stock = new ArrayList<>();
@@ -37,12 +42,20 @@ public class Basket {
         this.id = id;
     }
 
-//    @ManyToMany(cascade = CascadeType.PERSIST)
-////    @JoinTable(name="basket_stock",
-////    inverseJoinColumns = {@JoinColumn(name="basket_id", nullable = false, updatable = false)},
-////    joinColumns = {@JoinColumn(name="stock_id", nullable = false, updatable = false)})
-    @OneToMany(mappedBy = "basket")
+    @Column(name = "basketNumber")
+    public int getBasketNumber() {
+        return basketNumber;
+    }
 
+    public void setBasketNumber(int basketNumber) {
+        this.basketNumber = basketNumber;
+    }
+
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name="basket_stock",
+    inverseJoinColumns = {@JoinColumn(name="stock_id", nullable = false, updatable = false)},
+    joinColumns = {@JoinColumn(name="basket_id", nullable = false, updatable = false)})
+//    @OneToMany(mappedBy = "basket")
     public List<Stock> getStock() {
         return stock;
     }
