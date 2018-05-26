@@ -2,34 +2,38 @@ package models.users;
 
 import db.DBHelper;
 import models.basket.Basket;
+import models.stock.Order;
 import models.stock.Stock;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "customers")
 public class Customer extends User {
-    private ArrayList<ArrayList<Stock>> purchaseHistory;
+    private Set<Order> purchaseHistory;
     private Basket basket;
 
     public Customer(String name, String username) {
         super(name, username);
         this.basket = new Basket();
         DBHelper.save(basket);
-        this.purchaseHistory = new ArrayList<>();
+        this.purchaseHistory = new HashSet<>();
     }
 
     public Customer() {
     }
 
-    @Column(name = "purchaseHistory")
-    public ArrayList<ArrayList<Stock>> getPurchaseHistory() {
+
+    @OneToMany(mappedBy = "customer")
+    public Set<Order> getPurchaseHistory() {
         return purchaseHistory;
     }
 
-    public void setPurchaseHistory(ArrayList<ArrayList<Stock>> purchaseHistory) {
+    public void setPurchaseHistory(Set<Order> purchaseHistory) {
         this.purchaseHistory = purchaseHistory;
     }
 
@@ -59,7 +63,10 @@ public class Customer extends User {
     }
 
     public void purchase() {
-        this.purchaseHistory.add(this.basket.sell());
+        Order orderMade = new Order(this.basket.sell());
+        orderMade.setCustomer(this);
+        DBHelper.save(orderMade);
+        this.purchaseHistory.add(orderMade);
     }
 
 

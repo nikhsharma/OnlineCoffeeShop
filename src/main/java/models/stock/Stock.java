@@ -2,6 +2,7 @@ package models.stock;
 
 
 import models.basket.Basket;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -76,6 +77,7 @@ public class Stock {
 
 
     @ManyToOne
+    @Cascade(org.hibernate.annotations.CascadeType.PERSIST)
     @JoinColumn(name="basket_id")
     public Basket getBasket() {
         return basket;

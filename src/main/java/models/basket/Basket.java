@@ -11,18 +11,20 @@ import org.hibernate.annotations.Tables;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="baskets")
 public class Basket {
 
     private int id;
-    private List<Stock> stock;
+    private Set<Stock> stock;
     private Customer customer;
 
     public Basket() {
-        this.stock = new ArrayList<>();
+        this.stock = new HashSet<>();
     }
 
 
@@ -38,11 +40,11 @@ public class Basket {
     }
 
     @OneToMany(mappedBy = "basket")
-    public List<Stock> getStock() {
+    public Set<Stock> getStock() {
         return stock;
     }
 
-    public void setStock(List<Stock> stock) {
+    public void setStock(Set<Stock> stock) {
         this.stock = stock;
     }
 
@@ -66,9 +68,12 @@ public class Basket {
         originalStock.setQuantity(originalStock.getQuantity() + quantity);
     }
 
-    public ArrayList<Stock> sell() {
-        ArrayList<Stock> copy = new ArrayList<>(stock);
+    public Set<Stock> sell() {
+        Set<Stock> copy = new HashSet<>(stock);
         this.stock.clear();
+        for (Stock stock : copy) {
+            DBHelper.delete(stock);
+        }
         return copy;
     }
 

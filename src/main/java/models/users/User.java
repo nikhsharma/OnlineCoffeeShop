@@ -1,7 +1,5 @@
 package models.users;
 
-import models.basket.Basket;
-
 import javax.persistence.*;
 
 @Entity
