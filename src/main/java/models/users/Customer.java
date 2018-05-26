@@ -14,7 +14,7 @@ public class Customer extends User {
     private List<List<Stock>> purchaseHistory;
     private Basket basket;
 
-    public Customer(String name, String username) {
+    public Customer(String name, String username, Basket basket) {
         super(name, username);
         this.id = id;
         this.basket = new Basket();
@@ -27,18 +27,15 @@ public class Customer extends User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    @Override
     public int getId() {
         return id;
     }
 
-    @Override
     public void setId(int id) {
         this.id = id;
     }
 
-
-//    public List<List<Stock>> getPurchaseHistory() {
+    //    public List<List<Stock>> getPurchaseHistory() {
 //        return purchaseHistory;
 //    }
 
@@ -46,7 +43,7 @@ public class Customer extends User {
         this.purchaseHistory = purchaseHistory;
     }
 
-    @OneToOne(mappedBy ="customer", cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.PERSIST)
     public Basket getBasket() {
         return basket;
     }
@@ -70,4 +67,9 @@ public class Customer extends User {
     public void purchase() {
         this.purchaseHistory.add(this.basket.sell());
     }
+
+
+
+
+
 }

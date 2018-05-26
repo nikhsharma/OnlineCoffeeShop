@@ -1,5 +1,7 @@
 package db;
 
+import models.basket.Basket;
+import models.stock.Stock;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -26,6 +28,7 @@ public class DBHelper {
             session.close();
         }
     }
+
 
     public static <T> List<T> getAll(Class classType){
         session = HibernateUtil.getSessionFactory().openSession();
@@ -67,6 +70,13 @@ public class DBHelper {
         } finally {
             session.close();
         }
+    }
+
+    public static void addStockToBasket(Stock stock, Basket basket) {
+        stock.addBasket(basket);
+
+        save(basket);
+
     }
 
 

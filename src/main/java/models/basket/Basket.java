@@ -21,12 +21,11 @@ public class Basket {
     private List<Stock> stock;
     private Customer customer;
 
-    public Basket(){
+//    public Basket(){
+//
+//    }
 
-    }
-
-    public Basket(int basketNumber) {
-        this.basketNumber = basketNumber;
+    public Basket() {
         this.stock = new ArrayList<>();
         this.customer = new Customer();
     }
@@ -97,7 +96,7 @@ public class Basket {
         return copy;
     }
 
-    @OneToOne(cascade = CascadeType.PERSIST )
+    @OneToOne(mappedBy = "basket", cascade = CascadeType.PERSIST )
     public Customer getCustomer() {
         return customer;
     }
