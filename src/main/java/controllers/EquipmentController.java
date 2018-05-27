@@ -33,5 +33,14 @@ public class EquipmentController {
             model.put("template", "templates/equipment/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
+        get("/equipment/:id", (req, res) -> {
+            int id = Integer.parseInt(req.params("id"));
+            Stock item = DBHelper.find(Stock.class, id);
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("item", item);
+            model.put("template", "templates/equipment/show.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
     }
 }
