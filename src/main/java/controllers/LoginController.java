@@ -24,13 +24,13 @@ public class LoginController {
         post("/login", (req, res) -> {
             String inputtedUsername = req.queryParams("username");
             List<User> users = DBHelper.getAll(User.class);
-            for (User user : users) {
-                if (user.getUsername() == inputtedUsername) {
-                    req.session().attribute("name", user.getName());
+//            for (User user : users) {
+//                if (user.getUsername() == inputtedUsername) {
+//                    req.session().attribute("name", user.getName());
                     req.session().attribute("username", inputtedUsername);
-                }
-            }
-            res.redirect("/");
+//                }
+//            }
+            res.redirect("/account");
             return null;
         }, new VelocityTemplateEngine());
 

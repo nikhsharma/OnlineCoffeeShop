@@ -23,6 +23,15 @@
             <li>
                 <a href="/misc">Misc</a>
             </li>
+            <li>
+                #if ($user)
+                <a href="/account">My Account</a>
+                #else
+                <a href="/login">Login</a>
+                #end
+
+
+            </li>
         </ul>
     </nav>
     #parse($template)

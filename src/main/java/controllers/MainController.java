@@ -19,6 +19,7 @@ public class MainController {
         Seeds.seedData();
         staticFileLocation("/public");
 
+        UserController userController = new UserController();
         LoginController loginController = new LoginController();
         MiscController miscController = new MiscController();
         CoffeeController coffeeController = new CoffeeController();
@@ -26,7 +27,7 @@ public class MainController {
 
         get("/", (req, res) -> {
             HashMap<String, Object> model = new HashMap<>();
-            List<User> users = DBHelper.getAll(User.class);
+            model.put("user", req.session().attribute("username"));
             model.put("template", "templates/main.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
