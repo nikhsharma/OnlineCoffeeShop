@@ -1,3 +1,13 @@
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+nav ul a {
+    text-decoration: none;
+}
+
 .main_link {
     height: 20vh;
     width: 20vw;
