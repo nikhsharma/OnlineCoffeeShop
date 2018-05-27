@@ -1,12 +1,13 @@
 <p>list of all coffee</p>
 
 <div class="all_items">
-#foreach ($c in $coffee)
-<div class="single_item">
-    <hr />
-    <p>$c.getDescription()</p>
-    <p>$c.getPrice()</p>
-    <hr />
-</div>
-#end
+    #foreach ($c in $coffee)
+    <div class="single_item">
+        <hr />
+        <p>$c.getDescription()</p>
+        <p>$c.getPrice()</p>
+        <a href="/coffee/$c.getId()">Show More</a>
+        <hr />
+    </div>
+    #end
 </div>

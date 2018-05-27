@@ -32,6 +32,15 @@ public class CoffeeController {
             model.put("template", "templates/coffee/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
+        get("/coffee/:id", (req, res) -> {
+            int id = Integer.parseInt(req.params("id"));
+            Stock item = DBHelper.find(Stock.class, id);
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("item", item);
+            model.put("template", "templates/coffee/show.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
     }
 
 }
