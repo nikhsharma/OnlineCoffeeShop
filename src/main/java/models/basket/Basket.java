@@ -20,11 +20,11 @@ import java.util.Set;
 public class Basket {
 
     private int id;
-    private Set<Stock> stock;
+    private List<Stock> stock;
     private Customer customer;
 
     public Basket() {
-        this.stock = new HashSet<>();
+        this.stock = new ArrayList<>();
     }
 
 
@@ -40,11 +40,11 @@ public class Basket {
     }
 
     @OneToMany(mappedBy = "basket")
-    public Set<Stock> getStock() {
+    public List<Stock> getStock() {
         return stock;
     }
 
-    public void setStock(Set<Stock> stock) {
+    public void setStock(List<Stock> stock) {
         this.stock = stock;
     }
 
