@@ -96,4 +96,14 @@ public class Basket {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+    public double calculateTotal() {
+        double total = 0.00;
+        for (Stock item : stock ) {
+            if (item.getDescription() == item.getDescription()) {
+                total += item.getPrice();
+            }
+        }
+        return total;
+    }
 }
