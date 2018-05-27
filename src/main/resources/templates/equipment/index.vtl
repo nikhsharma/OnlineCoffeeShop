@@ -3,11 +3,9 @@
 <div class="all_items">
     #foreach ($e in $equipment)
     <div class="single_item">
-        <hr />
         <p>$e.getDescription()</p>
         <p>$e.getPrice()</p>
         <a href="/equipment/$e.getId()">Show More</a>
-        <hr />
     </div>
     #end
 </div>

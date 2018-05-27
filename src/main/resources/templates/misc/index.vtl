@@ -3,11 +3,9 @@
 <div class="all_items">
     #foreach ($m in $misc)
     <div class="single_item">
-        <hr />
         <p>$m.getDescription()</p>
         <p>$m.getPrice()</p>
         <a href="/misc/$m.getId()">Show More</a>
-        <hr />
     </div>
     #end
 </div>

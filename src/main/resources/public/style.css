@@ -1,3 +1,4 @@
+/*       LAYOUT       */
 nav ul {
     display: flex;
     justify-content: space-around;
@@ -8,6 +9,7 @@ nav ul a {
     text-decoration: none;
 }
 
+/*       HOME       */
 .main_link {
     height: 20vh;
     width: 20vw;
@@ -21,4 +23,16 @@ nav ul a {
 
 h1 {
     text-align: center;
+}
+
+/*       INDEX       */
+.all_items {
+    display: flex;
+}
+
+.single_item {
+    height: 20vh;
+    width: 20vw;
+    border: 1px solid black;
+
 }
