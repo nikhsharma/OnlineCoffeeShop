@@ -13,6 +13,8 @@ public class MainController {
 
     public static void main(String[] args) {
 
+        Seeds.seedData();
+
         MiscController miscController = new MiscController();
         CoffeeController coffeeController = new CoffeeController();
         EquipmentController equipmentController = new EquipmentController();
