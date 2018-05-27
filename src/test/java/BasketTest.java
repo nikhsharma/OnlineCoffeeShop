@@ -55,4 +55,11 @@ public class BasketTest {
         basket.addStock(stock2);
         assertEquals(20.00, basket.calculateTotal(), 0.1);
     }
+    @Test
+    public void canGetTotalCostOfBasketWhenAnItemIsRemoved(){
+        basket.addStock(stock);
+        basket.addStock(stock2);
+        basket.removeStock(stock2);
+        assertEquals(10.00, basket.calculateTotal(), 0.1);
+    }
 }
