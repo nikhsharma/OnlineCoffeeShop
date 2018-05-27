@@ -28,7 +28,7 @@ public class Customer extends User {
     }
 
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.PERSIST)
     public Set<Order> getPurchaseHistory() {
         return purchaseHistory;
     }
@@ -63,13 +63,20 @@ public class Customer extends User {
     }
 
     public void purchase() {
-        Order orderMade = new Order(this.basket.sell());
-        orderMade.setCustomer(this);
-        DBHelper.save(orderMade);
-        this.purchaseHistory.add(orderMade);
+//        Order orderMade = new Order(this.basket.sell());
+//        orderMade.setCustomer(this);
+//        this.purchaseHistory.add(orderMade);
+//        DBHelper.save(orderMade);
+//        this.purchaseHistory.add(orderMade);
+        this.basket.sell(this);
     }
 
-
+    public void addOrderToPurchaseHistory(Order order) {
+        this.purchaseHistory.add(order);
+        for (Stock stock : order.getPurchases()) {
+            DBHelper.save(stock);
+        }
+    }
 
 
 

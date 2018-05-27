@@ -19,6 +19,8 @@ public class Stock {
     private int quantity;
     private Boolean available;
     private Basket basket;
+    private Order order;
+
 
 
     public Stock() {
@@ -30,6 +32,7 @@ public class Stock {
         this.price = price;
         this.quantity = quantity;
         this.basket = null;
+        this.order = null;
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -77,7 +80,6 @@ public class Stock {
 
 
     @ManyToOne
-    @Cascade(org.hibernate.annotations.CascadeType.PERSIST)
     @JoinColumn(name="basket_id")
     public Basket getBasket() {
         return basket;
@@ -93,5 +95,15 @@ public class Stock {
 
     public void setAvailable(Boolean available) {
         this.available = available;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

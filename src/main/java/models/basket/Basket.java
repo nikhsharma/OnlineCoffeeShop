@@ -3,6 +3,7 @@ package models.basket;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.sun.tools.javah.Gen;
 import db.DBHelper;
+import models.stock.Order;
 import models.stock.Stock;
 
 import models.users.Customer;
@@ -39,7 +40,7 @@ public class Basket {
         this.id = id;
     }
 
-    @OneToMany(mappedBy = "basket")
+    @OneToMany(mappedBy = "basket", cascade = CascadeType.PERSIST)
     public Set<Stock> getStock() {
         return stock;
     }
@@ -68,13 +69,21 @@ public class Basket {
         originalStock.setQuantity(originalStock.getQuantity() + quantity);
     }
 
-    public Set<Stock> sell() {
+    public void sell(Customer customer) {
         Set<Stock> copy = new HashSet<>(stock);
+        Order newOrder = new Order(customer);
+
+
         this.stock.clear();
-        for (Stock stock : copy) {
-            DBHelper.delete(stock);
+
+        for (Stock item : copy) {
+            item.setBasket(null);
+            item.setOrder(newOrder);
         }
-        return copy;
+
+        newOrder.setPurchases(copy);
+        DBHelper.save(newOrder);
+        customer.addOrderToPurchaseHistory(newOrder);
     }
 
     @OneToOne(mappedBy = "basket", cascade = CascadeType.PERSIST )

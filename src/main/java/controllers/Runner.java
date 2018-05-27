@@ -3,6 +3,7 @@ package controllers;
 import db.DBBasket;
 import db.DBCustomer;
 import db.DBHelper;
+import db.DBOrder;
 import models.basket.Basket;
 import models.stock.Order;
 import models.stock.Stock;
@@ -57,8 +58,7 @@ public class Runner {
         List<Stock> allStock3 = DBHelper.getAll(Stock.class);
         List<User> allUsers3 = DBHelper.getAll(User.class);
         List<Order> custOrders = DBCustomer.showPurchaseHistory(customer1);
+        List<Stock> itemsInOrder = DBOrder.showItemsInOrder(custOrders.get(0));
         Set<Order> localcustpurchasehistory = customer1.getPurchaseHistory();
-
-
     }
 }

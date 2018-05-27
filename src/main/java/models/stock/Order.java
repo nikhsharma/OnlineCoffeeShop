@@ -13,12 +13,16 @@ public class Order {
     private Set<Stock> purchases;
     private Customer customer;
 
-    public Order(Set<Stock> purchases) {
-        this.purchases = purchases;
+    public Order(Customer customer) {
+        this.purchases = null;
+        this.customer = customer;
+    }
+
+    public Order() {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     public int getId() {
         return id;
@@ -29,8 +33,9 @@ public class Order {
     }
 
 
-    public HashSet<Stock> getPurchases() {
-        HashSet<Stock> copy = new HashSet<>(purchases);
+    @OneToMany(mappedBy = "order")
+    public Set<Stock> getPurchases() {
+        Set<Stock> copy = new HashSet<>(purchases);
         return copy;
     }
 
@@ -39,7 +44,7 @@ public class Order {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Customer_id", nullable = false)
+    @JoinColumn(name = "Customer_id")
     public Customer getCustomer() {
         return customer;
     }
