@@ -63,10 +63,12 @@ public class Basket {
         for (Stock item : copiedStock) {
             if (originalStock.getDescription() == item.getDescription()) {
                 quantity =  item.getQuantity();
+                item.setBasket(null);
                 stock.remove(item);
             }
         }
         originalStock.setQuantity(originalStock.getQuantity() + quantity);
+        DBHelper.save(originalStock);
     }
 
     public void sell(Customer customer) {
