@@ -1,0 +1,14 @@
+.main_link {
+    height: 20vh;
+    width: 20vw;
+    border: 1px solid black;
+}
+
+.main_content {
+    display: flex;
+    justify-content: space-around;
+}
+
+h1 {
+    text-align: center;
+}
