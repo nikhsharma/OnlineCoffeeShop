@@ -20,11 +20,11 @@ import java.util.Set;
 public class Basket {
 
     private int id;
-    private List<Stock> stock;
+    private Set<Stock> stock;
     private Customer customer;
 
     public Basket() {
-        this.stock = new ArrayList<>();
+        this.stock = new HashSet<>();
     }
 
 
@@ -40,11 +40,11 @@ public class Basket {
     }
 
     @OneToMany(mappedBy = "basket")
-    public List<Stock> getStock() {
+    public Set<Stock> getStock() {
         return stock;
     }
 
-    public void setStock(List<Stock> stock) {
+    public void setStock(Set<Stock> stock) {
         this.stock = stock;
     }
 
@@ -84,5 +84,15 @@ public class Basket {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public double calculateTotal() {
+        double total = 0.00;
+        for (Stock item : stock ) {
+            if (item.getDescription() == item.getDescription()) {
+                total += item.getPrice();
+            }
+        }
+        return total;
     }
 }
