@@ -71,13 +71,14 @@ public class BasketTest {
         basket.addStock(stock3);
         assertEquals(true, basket.checkIfDiscountOnTotalCanBeOffered());
     }
-//    @Test
-//    public void canApplyTenPercentDiscountOnTotalBasket(){
-//        basket.addStock(stock3);
-//        basket.calculateTotal();
-//        basket.applyTenPercentDiscount();
-//        assertEquals(900.00, basket.getTotal(), 0.1);
-//    }
+    @Test
+    public void canApplyTenPercentDiscountOnTotalBasket(){
+        basket.addStock(stock3);
+        basket.calculateTotal();
+        basket.applyTenPercentDiscount();
+        assertEquals(900.00, basket.getTotal(), 0.1);
+    }
+
 //    @Test
 //    public void cannotApplyTenPercentDiscountOnTotalBasket(){
 //        basket.addStock(stock);

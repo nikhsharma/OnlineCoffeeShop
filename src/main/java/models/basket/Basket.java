@@ -124,4 +124,11 @@ public class Basket {
         return false;
     }
 
+    public void applyTenPercentDiscount() {
+        if (checkIfDiscountOnTotalCanBeOffered()) {
+            total = total * 0.9;
+        }
+    }
+
+
 }
