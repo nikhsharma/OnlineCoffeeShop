@@ -65,7 +65,7 @@ public class AdminController {
             int id = Integer.parseInt(req.params("id"));
             Stock stock = DBHelper.find(Stock.class, id);
             DBHelper.delete(stock);
-            res.redirect("stock-management");
+            res.redirect("/stock-management");
             return null;
         }, new VelocityTemplateEngine());
 //        create functions above this line
