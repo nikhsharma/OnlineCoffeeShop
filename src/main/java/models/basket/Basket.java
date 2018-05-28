@@ -116,5 +116,12 @@ public class Basket {
         setTotal(total);
         return getTotal();
     }
+    public boolean checkIfDiscountOnTotalCanBeOffered() {
+        calculateTotal();
+        if (this.total >= 100.00) {
+            return true;
+        }
+        return false;
+    }
 
 }
