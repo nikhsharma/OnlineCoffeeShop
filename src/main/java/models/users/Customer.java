@@ -1,41 +1,43 @@
 package models.users;
 
+import db.DBHelper;
 import models.basket.Basket;
+import models.stock.Order;
 import models.stock.Stock;
 
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-public class Customer {
-    private List<Stock> purchaseHistory;
-    private String username;
+@Entity
+@Table(name = "customers")
+public class Customer extends User {
+    private Set<Order> purchaseHistory;
     private Basket basket;
 
-    public Customer(String username) {
-        this.username = username;
+    public Customer(String name, String username) {
+        super(name, username);
         this.basket = new Basket();
-        this.purchaseHistory = new ArrayList<>();
+        DBHelper.save(basket);
+        this.purchaseHistory = new HashSet<>();
     }
 
     public Customer() {
     }
 
-    public List<Stock> getPurchaseHistory() {
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.PERSIST)
+    public Set<Order> getPurchaseHistory() {
         return purchaseHistory;
     }
 
-    public void setPurchaseHistory(List<Stock> purchaseHistory) {
+    public void setPurchaseHistory(Set<Order> purchaseHistory) {
         this.purchaseHistory = purchaseHistory;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
+    @OneToOne(cascade = CascadeType.PERSIST)
     public Basket getBasket() {
         return basket;
     }
@@ -43,4 +45,39 @@ public class Customer {
     public void setBasket(Basket basket) {
         this.basket = basket;
     }
+
+    public int stockInBasketCount() {
+        return this.basket.stockCount();
+    }
+
+    public void addToBasket(Stock stock, int quantity) {
+        Stock stockToAdd = new Stock(stock.getDescription(), stock.getType(), stock.getPrice(), quantity);
+        stockToAdd.setBasket(this.basket);
+        DBHelper.save(stockToAdd);
+        this.basket.addStock(stockToAdd);
+        stock.setQuantity(stock.getQuantity() - quantity);
+    }
+
+    public void removeFromBasket(Stock stock) {
+        this.basket.removeStock(stock);
+    }
+
+    public void purchase() {
+//        Order orderMade = new Order(this.basket.sell());
+//        orderMade.setCustomer(this);
+//        this.purchaseHistory.add(orderMade);
+//        DBHelper.save(orderMade);
+//        this.purchaseHistory.add(orderMade);
+        this.basket.sell(this);
+    }
+
+    public void addOrderToPurchaseHistory(Order order) {
+        this.purchaseHistory.add(order);
+        for (Stock stock : order.getPurchases()) {
+            DBHelper.save(stock);
+        }
+    }
+
+
+
 }

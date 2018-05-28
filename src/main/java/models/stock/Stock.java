@@ -1,21 +1,42 @@
 package models.stock;
 
 
-public abstract class Stock {
+import models.basket.Basket;
+import org.hibernate.annotations.Cascade;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name="stock")
+public class Stock {
 
     private int id;
+    private String description;
+    private StockType type;
     private double price;
-    private int quanity;
+    private int quantity;
     private Boolean available;
+    private Basket basket;
+    private Order order;
+
+
 
     public Stock() {
     }
 
-    public Stock(double price, int quanity) {
+    public Stock(String description, StockType type, double price, int quantity) {
+        this.description = description;
+        this.type = type;
         this.price = price;
-        this.quanity = quanity;
+        this.quantity = quantity;
+        this.basket = null;
+        this.order = null;
     }
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -24,6 +45,23 @@ public abstract class Stock {
         this.id = id;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public StockType getType() {
+        return type;
+    }
+
+    public void setType(StockType type) {
+        this.type = type;
+    }
+
+    @Column(name="price")
     public double getPrice() {
         return price;
     }
@@ -32,12 +70,23 @@ public abstract class Stock {
         this.price = price;
     }
 
-    public int getQuanity() {
-        return quanity;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQuanity(int quanity) {
-        this.quanity = quanity;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+
+    @ManyToOne
+    @JoinColumn(name="basket_id")
+    public Basket getBasket() {
+        return basket;
+    }
+
+    public void setBasket(Basket basket) {
+        this.basket = basket;
     }
 
     public Boolean getAvailable() {
@@ -46,5 +95,15 @@ public abstract class Stock {
 
     public void setAvailable(Boolean available) {
         this.available = available;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }
