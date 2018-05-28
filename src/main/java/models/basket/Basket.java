@@ -64,6 +64,7 @@ public class Basket {
             if (originalStock.getDescription() == item.getDescription()) {
                 quantity =  item.getQuantity();
                 item.setBasket(null);
+                DBHelper.save(item);
                 stock.remove(item);
             }
         }
