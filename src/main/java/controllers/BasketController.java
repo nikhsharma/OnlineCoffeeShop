@@ -55,6 +55,13 @@ public class BasketController {
             return null;
         });
 
+        post("/basket/purchase", (req, res) -> {
+            Customer currentUser = req.session().attribute("user");
+            currentUser.purchase();
+            res.redirect("/account");
+            return null;
+        });
+
         post("/basket/:id", (req, res) -> {
             int id = Integer.parseInt(req.params("id"));
             int quantity = Integer.parseInt(req.queryParams("quantity"));

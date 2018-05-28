@@ -30,7 +30,7 @@ public class Customer extends User {
     }
 
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     public Set<Order> getPurchaseHistory() {
         return purchaseHistory;
     }
