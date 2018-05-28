@@ -23,8 +23,10 @@ public class Basket {
     private int id;
     private Set<Stock> stock;
     private Customer customer;
+    private double total;
 
     public Basket() {
+        this. total = total;
         this.stock = new HashSet<>();
     }
 
@@ -38,6 +40,15 @@ public class Basket {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Column(name="total")
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 
     @OneToMany(mappedBy = "basket", cascade = CascadeType.PERSIST)
@@ -55,6 +66,7 @@ public class Basket {
 
     public void addStock(Stock stock) {
         this.stock.add(stock);
+        calculateTotal();
     }
 
     public void removeStock(Stock originalStock) {
@@ -70,6 +82,7 @@ public class Basket {
         }
         originalStock.setQuantity(originalStock.getQuantity() + quantity);
         DBHelper.save(originalStock);
+        calculateTotal();
     }
 
     public void sell(Customer customer) {
@@ -99,12 +112,34 @@ public class Basket {
     }
 
     public double calculateTotal() {
-        double total = 0.00;
-        for (Stock item : stock ) {
-            if (item.getDescription() == item.getDescription()) {
-                total += item.getPrice();
+        total = 0;
+        for (Stock item : stock) {
+            total = (item.getPrice() * item.getQuantity()) + this.total;
+        }
+        setTotal(total);
+        return getTotal();
+    }
+
+    public boolean checkIfDiscountOnTotalCanBeOffered() {
+        calculateTotal();
+        if (this.total >= 100.00) {
+            return true;
+        }
+        return false;
+    }
+
+    public void applyTenPercentDiscount() {
+        if (checkIfDiscountOnTotalCanBeOffered()) {
+            total = total * 0.9;
+        }
+    }
+
+    public void applyBuyOneGetOneFree(Stock stock) {
+        for (Stock item : this.stock) {
+            if (item.getQuantity() % 2 == 0) {
+                total = item.getPrice() / 2;
             }
         }
-        return total;
+
     }
 }
