@@ -1,13 +1,30 @@
-
 <table>
     <tr>
         <th>Description</th>
+        <th>Quantity</th>
         <th>Price</th>
     </tr>
-#foreach ($item in $basket.getStock())
+    #foreach ($item in $basket.getStock())
     <tr>
         <td>$item.getDescription()</td>
+        <td>$item.getQuantity()</td>
         <td>$item.getPrice()</td>
+        <td>
+            <form action="/basket/remove/$item.getId()" method="post">
+                <input type="submit" class="button" value="Remove Item">
+            </form>
+        </td>
     </tr>
-#end
+    #end
+    <tr>
+        <td></td>
+        <td>Total :</td>
+        <td>$basket.getTotal()</td>
+        <td>
+            <form action="/basket/purchase">
+                <input type="submit" class="button" value="Place Order">
+            </form>
+        </td>
+    </tr>
+
 </table>
