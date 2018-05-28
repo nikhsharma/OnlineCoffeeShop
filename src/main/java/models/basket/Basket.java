@@ -111,11 +111,12 @@ public class Basket {
     public double calculateTotal() {
         total = 0;
         for (Stock item : stock) {
-            total = item.getPrice() + this.total;
+            total = (item.getPrice() * item.getQuantity()) + this.total;
         }
         setTotal(total);
         return getTotal();
     }
+
     public boolean checkIfDiscountOnTotalCanBeOffered() {
         calculateTotal();
         if (this.total >= 100.00) {
