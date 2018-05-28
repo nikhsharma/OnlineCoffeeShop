@@ -27,7 +27,7 @@ public class EquipmentController {
             List<Stock> allStock = DBHelper.getAll(Stock.class);
             List<Stock> equipment = new ArrayList<>();
             for (Stock item : allStock) {
-                if (item.getType() == StockType.EQUIPMENT) {
+                if ((item.getType() == StockType.EQUIPMENT) && (item.getBasket() == null) && (item.getOrder() == null)) {
                     equipment.add(item);
                 }
             }
