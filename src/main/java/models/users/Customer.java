@@ -1,52 +1,43 @@
 package models.users;
 
+import db.DBHelper;
 import models.basket.Basket;
+import models.stock.Order;
 import models.stock.Stock;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name = "customer")
+@Table(name = "customers")
 public class Customer extends User {
-    private int id;
-    private List<List<Stock>> purchaseHistory;
+    private Set<Order> purchaseHistory;
     private Basket basket;
 
     public Customer(String name, String username) {
         super(name, username);
-        this.id = id;
         this.basket = new Basket();
-        this.purchaseHistory = new ArrayList<>();
+        DBHelper.save(basket);
+        this.purchaseHistory = new HashSet<>();
     }
 
     public Customer() {
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    @Override
-    public int getId() {
-        return id;
-    }
 
-    @Override
-    public void setId(int id) {
-        this.id = id;
-    }
-
-
-    public List<List<Stock>> getPurchaseHistory() {
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.PERSIST)
+    public Set<Order> getPurchaseHistory() {
         return purchaseHistory;
     }
 
-    public void setPurchaseHistory(List<List<Stock>> purchaseHistory) {
+    public void setPurchaseHistory(Set<Order> purchaseHistory) {
         this.purchaseHistory = purchaseHistory;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.PERSIST)
     public Basket getBasket() {
         return basket;
     }
@@ -60,7 +51,11 @@ public class Customer extends User {
     }
 
     public void addToBasket(Stock stock, int quantity) {
-        this.basket.addStock(stock, quantity);
+        Stock stockToAdd = new Stock(stock.getDescription(), stock.getType(), stock.getPrice(), quantity);
+        stockToAdd.setBasket(this.basket);
+        DBHelper.save(stockToAdd);
+        this.basket.addStock(stockToAdd);
+        stock.setQuantity(stock.getQuantity() - quantity);
     }
 
     public void removeFromBasket(Stock stock) {
@@ -68,6 +63,21 @@ public class Customer extends User {
     }
 
     public void purchase() {
-        this.purchaseHistory.add(this.basket.sell());
+//        Order orderMade = new Order(this.basket.sell());
+//        orderMade.setCustomer(this);
+//        this.purchaseHistory.add(orderMade);
+//        DBHelper.save(orderMade);
+//        this.purchaseHistory.add(orderMade);
+        this.basket.sell(this);
     }
+
+    public void addOrderToPurchaseHistory(Order order) {
+        this.purchaseHistory.add(order);
+        for (Stock stock : order.getPurchases()) {
+            DBHelper.save(stock);
+        }
+    }
+
+
+
 }

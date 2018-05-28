@@ -7,18 +7,18 @@ import java.util.HashMap;
 
 import static spark.Spark.get;
 
-public class CoffeeController {
+public class EquipmentController {
 
-    public CoffeeController() {
+    public EquipmentController() {
         setUpEndPoints();
     }
 
     private void setUpEndPoints() {
-        get("/coffee", (req, res) -> {
+
+        get("/equipment", (req, res) -> {
             HashMap<String, Object> model = new HashMap<>();
-            model.put("template", "templates/coffee/index.vtl");
+            model.put("template", "templates/equipment/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
     }
-
 }

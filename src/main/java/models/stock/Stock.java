@@ -2,8 +2,11 @@ package models.stock;
 
 
 import models.basket.Basket;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="stock")
@@ -16,6 +19,8 @@ public class Stock {
     private int quantity;
     private Boolean available;
     private Basket basket;
+    private Order order;
+
 
 
     public Stock() {
@@ -26,8 +31,8 @@ public class Stock {
         this.type = type;
         this.price = price;
         this.quantity = quantity;
-        this.basket = new Basket();
-
+        this.basket = null;
+        this.order = null;
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -72,12 +77,10 @@ public class Stock {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-//    @ManyToMany(cascade = CascadeType.PERSIST)
-//    @JoinTable(name = "basket_stock",
-//            inverseJoinColumns = {@JoinColumn(name = "stock_id", nullable = false, updatable = false)},
-//            joinColumns = {@JoinColumn(name = "basket_id", nullable = false, updatable = false)})
+
+
     @ManyToOne
-    @JoinColumn(name="basket_id", nullable = true)
+    @JoinColumn(name="basket_id")
     public Basket getBasket() {
         return basket;
     }
@@ -92,5 +95,15 @@ public class Stock {
 
     public void setAvailable(Boolean available) {
         this.available = available;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

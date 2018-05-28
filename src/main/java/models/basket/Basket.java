@@ -2,6 +2,8 @@ package models.basket;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.sun.tools.javah.Gen;
+import db.DBHelper;
+import models.stock.Order;
 import models.stock.Stock;
 
 import models.users.Customer;
@@ -10,19 +12,20 @@ import org.hibernate.annotations.Tables;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name="basket")
+@Table(name="baskets")
 public class Basket {
+
     private int id;
-    private List<Stock> stock;
+    private Set<Stock> stock;
     private Customer customer;
 
-
     public Basket() {
-        this.stock = new ArrayList<>();
-        this.customer = new Customer();
+        this.stock = new HashSet<>();
     }
 
 
@@ -37,17 +40,12 @@ public class Basket {
         this.id = id;
     }
 
-//    @ManyToMany(cascade = CascadeType.PERSIST)
-////    @JoinTable(name="basket_stock",
-////    inverseJoinColumns = {@JoinColumn(name="basket_id", nullable = false, updatable = false)},
-////    joinColumns = {@JoinColumn(name="stock_id", nullable = false, updatable = false)})
-    @OneToMany(mappedBy = "basket")
-
-    public List<Stock> getStock() {
+    @OneToMany(mappedBy = "basket", cascade = CascadeType.PERSIST)
+    public Set<Stock> getStock() {
         return stock;
     }
 
-    public void setStock(List<Stock> stock) {
+    public void setStock(Set<Stock> stock) {
         this.stock = stock;
     }
 
@@ -55,9 +53,8 @@ public class Basket {
         return stock.size();
     }
 
-    public void addStock(Stock stock, int quantity) {
-        this.stock.add(new Stock(stock.getDescription(), stock.getType(), stock.getPrice(), quantity));
-        stock.setQuantity(stock.getQuantity() - quantity);
+    public void addStock(Stock stock) {
+        this.stock.add(stock);
     }
 
     public void removeStock(Stock originalStock) {
@@ -66,16 +63,29 @@ public class Basket {
         for (Stock item : copiedStock) {
             if (originalStock.getDescription() == item.getDescription()) {
                 quantity =  item.getQuantity();
+                item.setBasket(null);
                 stock.remove(item);
             }
         }
         originalStock.setQuantity(originalStock.getQuantity() + quantity);
+        DBHelper.save(originalStock);
     }
 
-    public List<Stock> sell() {
-        List<Stock> copy = new ArrayList<>(stock);
+    public void sell(Customer customer) {
+        Set<Stock> copy = new HashSet<>(stock);
+        Order newOrder = new Order(customer);
+
+
         this.stock.clear();
-        return copy;
+
+        for (Stock item : copy) {
+            item.setBasket(null);
+            item.setOrder(newOrder);
+        }
+
+        newOrder.setPurchases(copy);
+        DBHelper.save(newOrder);
+        customer.addOrderToPurchaseHistory(newOrder);
     }
 
     @OneToOne(mappedBy = "basket", cascade = CascadeType.PERSIST )
@@ -85,5 +95,15 @@ public class Basket {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public double calculateTotal() {
+        double total = 0.00;
+        for (Stock item : stock ) {
+            if (item.getDescription() == item.getDescription()) {
+                total += item.getPrice();
+            }
+        }
+        return total;
     }
 }

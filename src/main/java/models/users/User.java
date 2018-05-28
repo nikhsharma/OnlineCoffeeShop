@@ -2,7 +2,9 @@ package models.users;
 
 import javax.persistence.*;
 
-
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "users")
 public abstract class User {
     private int id;
     private String name;
@@ -16,7 +18,9 @@ public abstract class User {
     public User() {
     }
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     public int getId() {
         return id;
     }
@@ -25,6 +29,7 @@ public abstract class User {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -33,6 +38,7 @@ public abstract class User {
         this.name = name;
     }
 
+    @Column(name = "username")
     public String getUsername() {
         return username;
     }
@@ -40,4 +46,6 @@ public abstract class User {
     public void setUsername(String username) {
         this.username = username;
     }
+
+
 }
