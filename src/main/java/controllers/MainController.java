@@ -23,6 +23,7 @@ public class MainController {
         MiscController miscController = new MiscController();
         CoffeeController coffeeController = new CoffeeController();
         EquipmentController equipmentController = new EquipmentController();
+        AdminController adminController = new AdminController();
 
         get("/", (req, res) -> {
             HashMap<String, Object> model = new HashMap<>();
