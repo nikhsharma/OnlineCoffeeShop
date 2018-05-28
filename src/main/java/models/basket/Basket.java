@@ -23,8 +23,10 @@ public class Basket {
     private int id;
     private Set<Stock> stock;
     private Customer customer;
+    private double total;
 
     public Basket() {
+        this. total = total;
         this.stock = new HashSet<>();
     }
 
@@ -38,6 +40,15 @@ public class Basket {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Column(name="total")
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 
     @OneToMany(mappedBy = "basket", cascade = CascadeType.PERSIST)
@@ -98,12 +109,12 @@ public class Basket {
     }
 
     public double calculateTotal() {
-        double total = 0.00;
-        for (Stock item : stock ) {
-            if (item.getDescription() == item.getDescription()) {
-                total += item.getPrice();
-            }
+        total = 0;
+        for (Stock item : stock) {
+            total = item.getPrice() + this.total;
         }
-        return total;
+        setTotal(total);
+        return getTotal();
     }
+
 }

@@ -66,29 +66,29 @@ public class BasketTest {
         basket.removeStock(stock2);
         assertEquals(10.00, basket.calculateTotal(), 0.1);
     }
-    @Test
-    public void canAssertBasketTotalIsOver1000(){
-        basket.addStock(stock3);
-        assertEquals(true, basket.checkIfDiscountOnTotalCanBeOffered());
-    }
-    @Test
-    public void canApplyTenPercentDiscountOnTotalBasket(){
-        basket.addStock(stock3);
-        basket.calculateTotal();
-        basket.applyTenPercentDiscount();
-        assertEquals(900.00, basket.getTotal(), 0.1);
-    }
-    @Test
-    public void cannotApplyTenPercentDiscountOnTotalBasket(){
-        basket.addStock(stock);
-        basket.applyTenPercentDiscount();
-        assertEquals(10.00, basket.calculateTotal(), 0.1);
-    }
-    @Test
-    public void canBuyOneGetOneFree(){
-        basket.addStock(stock);
-        assertEquals(10, basket.calculateTotal(), 0.1);
-    }
+//    @Test
+//    public void canAssertBasketTotalIsOver1000(){
+//        basket.addStock(stock3);
+//        assertEquals(true, basket.checkIfDiscountOnTotalCanBeOffered());
+//    }
+//    @Test
+//    public void canApplyTenPercentDiscountOnTotalBasket(){
+//        basket.addStock(stock3);
+//        basket.calculateTotal();
+//        basket.applyTenPercentDiscount();
+//        assertEquals(900.00, basket.getTotal(), 0.1);
+//    }
+//    @Test
+//    public void cannotApplyTenPercentDiscountOnTotalBasket(){
+//        basket.addStock(stock);
+//        basket.applyTenPercentDiscount();
+//        assertEquals(10.00, basket.calculateTotal(), 0.1);
+//    }
+//    @Test
+//    public void canBuyOneGetOneFree(){
+//        basket.addStock(stock);
+//        assertEquals(10, basket.calculateTotal(), 0.1);
+//    }
 
 
 
