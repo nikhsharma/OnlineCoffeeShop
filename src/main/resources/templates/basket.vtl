@@ -1,0 +1,13 @@
+
+<table>
+    <tr>
+        <th>Description</th>
+        <th>Price</th>
+    </tr>
+#foreach ($item in $basket.getStock())
+    <tr>
+        <td>$item.getDescription()</td>
+        <td>$item.getPrice()</td>
+    </tr>
+#end
+</table>

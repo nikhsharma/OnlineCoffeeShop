@@ -18,6 +18,7 @@ public class MainController {
         Seeds.seedData();
         staticFileLocation("/public");
 
+        BasketController basketController = new BasketController();
         CustomerController userController = new CustomerController();
         LoginController loginController = new LoginController();
         MiscController miscController = new MiscController();
