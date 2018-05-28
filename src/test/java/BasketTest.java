@@ -16,6 +16,7 @@ public class BasketTest {
     private Basket basket;
     private Stock stock;
     private Stock stock2;
+    private Stock stock3;
     private Customer customer;
 
     @Before
@@ -23,6 +24,7 @@ public class BasketTest {
         basket = new Basket();
         stock = new Stock("Java beans", StockType.COFFEE, 10.00, 5);
         stock2 = new Stock("Java beanz", StockType.COFFEE, 10.00, 5);
+        stock3 = new Stock("Machine", StockType.EQUIPMENT, 1000.00, 1);
         customer = new Customer("bob", "808");
     }
 
@@ -64,4 +66,30 @@ public class BasketTest {
         basket.removeStock(stock2);
         assertEquals(10.00, basket.calculateTotal(), 0.1);
     }
+    @Test
+    public void canAssertBasketTotalIsOver1000(){
+        basket.addStock(stock3);
+        assertEquals(true, basket.checkIfDiscountOnTotalCanBeOffered());
+    }
+    @Test
+    public void canApplyTenPercentDiscountOnTotalBasket(){
+        basket.addStock(stock3);
+        basket.calculateTotal();
+        basket.applyTenPercentDiscount();
+        assertEquals(900.00, basket.getTotal(), 0.1);
+    }
+    @Test
+    public void cannotApplyTenPercentDiscountOnTotalBasket(){
+        basket.addStock(stock);
+        basket.applyTenPercentDiscount();
+        assertEquals(10.00, basket.calculateTotal(), 0.1);
+    }
+    @Test
+    public void canBuyOneGetOneFree(){
+        basket.addStock(stock);
+        assertEquals(10, basket.calculateTotal(), 0.1);
+    }
+
+
+
 }
