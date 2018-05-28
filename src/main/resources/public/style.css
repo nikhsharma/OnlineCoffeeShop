@@ -1,38 +1,133 @@
 /*       LAYOUT       */
-nav ul {
-    display: flex;
-    justify-content: space-around;
-    list-style-type: none;
-}
 
-nav ul a {
-    text-decoration: none;
-}
-
-/*       HOME       */
-.main_link {
-    height: 20vh;
-    width: 20vw;
-    border: 1px solid black;
-}
-
-.main_content {
-    display: flex;
-    justify-content: space-around;
+body {
+    font-family: 'roboto', sans-serif;
+    background-color: aliceblue;
+    padding:0;
+    margin:0;
 }
 
 h1 {
     text-align: center;
 }
 
+nav {
+    height: 6vh;
+    background-color: white;
+    padding:0;
+    margin:0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    padding:2vh;
+    margin:0;
+}
+
+nav ul a {
+    text-decoration: none;
+    padding:0;
+    margin:0;
+    color: darkslategray;
+}
+
+
+
+/*       HOME       */
+
+.main_header {
+    margin: 0;
+    padding: 0;
+    height: 45vh;
+    background-image: url("https://organicfit.tv/wp-content/uploads/2018/01/pexels-photo-2.jpg");
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.3);
+    background-blend-mode: darken;
+}
+
+.main_header h1 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    position: relative;
+    top: 15vh;
+    color: white;
+    font-size: 4rem;
+}
+
+.main_link {
+    height: 50vh;
+    width: 33.33vw;
+    background-image: url("");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    background-blend-mode: darken;
+    transition: 0.3s;
+    background-repeat: no-repeat;
+}
+
+.main_link:before {
+    text-decoration: non
+}
+
+.main_link:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.main-section {
+    display: flex;
+    justify-content: space-around;
+}
+
+.main_content {
+    display: flex;
+    justify-content: space-around;
+    width: 80vw;
+}
+
+.main_content a {
+    text-decoration: none;
+    color: white;
+}
+
+.main_coffee {
+    background-image: url("https://s.financesonline.com/uploads/coffee.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.main_equipment {
+    background-image: url("https://cdn.shopify.com/s/files/1/1872/7081/products/CP-Lifestyle_non-cropped_2048x.jpg?v=1506957588");
+    background-position: center;
+    background-size: cover;
+}
+
+.main_misc {
+    background-image: url("https://cdn.shopify.com/s/files/1/0438/1069/products/Hand_Thrown_Ceramic_Coffee_Mug_Navy_1_1024x1024.jpg?v=1493741902");
+    background-position: center;
+    background-size: cover;
+}
+
+
+
+
 /*       INDEX       */
 .all_items {
     display: flex;
+    justify-content: center;
 }
 
 .single_item {
     height: 20vh;
     width: 20vw;
     border: 1px solid black;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
