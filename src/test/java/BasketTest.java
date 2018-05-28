@@ -100,7 +100,4 @@ public class BasketTest {
         basket.applyBuyOneGetOneFree(stock3);
         assertEquals(1000, basket.getTotal(), 0.1);
     }
-
-
-
 }

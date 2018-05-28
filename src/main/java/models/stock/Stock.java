@@ -35,6 +35,7 @@ public class Stock {
         this.quantity = quantity;
         this.basket = null;
         this.order = null;
+        this.available = available;
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -100,12 +101,20 @@ public class Stock {
         this.basket = basket;
     }
 
+    @Column(name="availability")
     public Boolean getAvailable() {
         return available;
     }
 
     public void setAvailable(Boolean available) {
         this.available = available;
+    }
+
+    public boolean checkAvailability() {
+        if (quantity > 0) {
+            setAvailable(true);
+        } else setAvailable(false);
+        return available;
     }
 
     @ManyToOne
