@@ -60,6 +60,11 @@ public class AdminController {
         return  new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+        post("/stock-management/:id/edit", (req, res) -> {
+
+
+        }, new VelocityTemplateEngine());
+
 
         post("stock-management/:id/delete", (req, res) -> {
             int id = Integer.parseInt(req.params("id"));
