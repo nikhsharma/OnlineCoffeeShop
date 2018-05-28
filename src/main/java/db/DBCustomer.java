@@ -40,8 +40,9 @@ public class DBCustomer {
 
         try {
             Criteria cr = session.createCriteria(Basket.class);
-            cr.add(Restrictions.eq("customer", customer));
-            foundBasket = (Basket) cr.uniqueResult();
+            cr.createAlias("customer", "basketCustomer");
+            cr.add(Restrictions.eq("basketCustomer.id", customer.getId()));
+            foundBasket = (Basket)cr.uniqueResult();
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {

@@ -1,9 +1,11 @@
 package controllers;
 
+import db.DBBasket;
 import db.DBCustomer;
 import db.DBHelper;
 import models.basket.Basket;
 import models.stock.Stock;
+import models.users.Admin;
 import models.users.Customer;
 import models.users.User;
 import spark.ModelAndView;
@@ -23,8 +25,8 @@ public class BasketController {
     private void setUpEndPoints() {
 
         get("/basket", (req, res) -> {
-            User currentUser = LoginController.getLoggedInUserName(req, res);
-            Basket basket = DBCustomer.showCustomersBasket((Customer)currentUser);
+            Customer currentUser = req.session().attribute("user");
+            Basket basket = DBCustomer.showCustomersBasket(currentUser);
             HashMap<String, Object> model = new HashMap<>();
             model.put("basket", basket);
             model.put("template", "templates/basket.vtl");

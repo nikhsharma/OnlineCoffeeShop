@@ -5,6 +5,7 @@ import db.DBHelper;
 import models.basket.Basket;
 import models.stock.Order;
 import models.stock.Stock;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.util.ArrayList;

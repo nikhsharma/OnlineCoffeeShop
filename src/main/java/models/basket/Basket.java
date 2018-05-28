@@ -50,7 +50,7 @@ public class Basket {
         this.total = total;
     }
 
-    @OneToMany(mappedBy = "basket", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "basket", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     public Set<Stock> getStock() {
         return stock;
     }
