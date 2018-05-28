@@ -151,3 +151,13 @@ nav ul a {
     color: white;
     font-size: 3.5rem;
 }
+
+
+/*       LOGIN       */
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
