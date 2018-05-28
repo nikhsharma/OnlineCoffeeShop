@@ -1,6 +1,9 @@
 <p>Hello</p>
 
 <form action="/stock-management/$stock.getId()/edit" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required="true" value="$stock.getName()">
+
     <label for="description">Description:</label>
     <input type="text" id="description" name="description" required="true" value="$stock.getDescription()">
 
