@@ -59,7 +59,7 @@ public class BasketTest {
     public void canGetTotalCostOfBasket(){
         basket.addStock(stock);
         basket.addStock(stock2);
-        assertEquals(100.00, basket.calculateTotal(), 0.1);
+        assertEquals(100.00, basket.getTotal(), 0.1);
     }
     @Test
     public void canGetTotalCostOfBasketWhenAnItemIsRemoved(){
@@ -67,7 +67,7 @@ public class BasketTest {
         basket.addStock(stock2);
         basket.addStock(stock3);
         basket.removeStock(stock2);
-        assertEquals(1050.00, basket.calculateTotal(), 0.1);
+        assertEquals(1050.00, basket.getTotal(), 0.1);
     }
     @Test
     public void canAssertBasketTotalIsOver1000(){
@@ -93,6 +93,12 @@ public class BasketTest {
         basket.addStock(stock4);
         basket.applyBuyOneGetOneFree(stock4);
         assertEquals(7.5, basket.getTotal(), 0.1);
+    }
+    @Test
+    public void cannotBuyOneGetObeFree() {
+        basket.addStock(stock3);
+        basket.applyBuyOneGetOneFree(stock3);
+        assertEquals(1000, basket.getTotal(), 0.1);
     }
 
 

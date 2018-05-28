@@ -133,11 +133,12 @@ public class Basket {
         }
     }
 
-
     public void applyBuyOneGetOneFree(Stock stock) {
-        for (Stock item : this.stock){
-            if (item.getQuantity() % 2 == 0);
-            total = item.getPrice() / 2;
+        for (Stock item : this.stock) {
+            if (item.getQuantity() % 2 == 0) {
+                total = item.getPrice() / 2;
+            }
         }
+
     }
 }
