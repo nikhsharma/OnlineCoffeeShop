@@ -77,7 +77,7 @@ public class Runner {
         List<Order> custOrder4 = DBCustomer.showPurchaseHistory(customer1);
         List<Stock> itemsInOrde4 = DBOrder.showItemsInOrder(DBHelper.find(Order.class, 2));
         Set<Order> localcustpurchasehistor4 = customer1.getPurchaseHistory();
-//        foundBasket.calculateTotal();
+        foundBasket.calculateTotal();
 
     }
 }

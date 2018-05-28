@@ -66,6 +66,7 @@ public class Basket {
 
     public void addStock(Stock stock) {
         this.stock.add(stock);
+        calculateTotal();
     }
 
     public void removeStock(Stock originalStock) {
@@ -80,6 +81,7 @@ public class Basket {
         }
         originalStock.setQuantity(originalStock.getQuantity() + quantity);
         DBHelper.save(originalStock);
+        calculateTotal();
     }
 
     public void sell(Customer customer) {
@@ -132,4 +134,10 @@ public class Basket {
     }
 
 
+    public void applyBuyOneGetOneFree(Stock stock) {
+        for (Stock item : this.stock){
+            if (item.getQuantity() % 2 == 0);
+            total = item.getPrice() / 2;
+        }
+    }
 }
