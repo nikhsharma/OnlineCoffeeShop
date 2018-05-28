@@ -35,7 +35,7 @@ public class Stock {
         this.quantity = quantity;
         this.basket = null;
         this.order = null;
-        this.availability = false;
+        this.availability = true;
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -102,18 +102,18 @@ public class Stock {
     }
 
     @Column(name="availability")
-    public Boolean getAvailability() {
+    public boolean getAvailability() {
         return availability;
     }
 
-    public void setAvailability(Boolean availability) {
+    public void setAvailability(boolean availability) {
         this.availability = availability;
     }
 
     public boolean checkAvailability() {
-        if (quantity > 0) {
-            setAvailability(true);
-            return availability;
+        if (this.quantity == 0) {
+            setAvailability(false);
+            return getAvailability();
         }
         return getAvailability();
     }

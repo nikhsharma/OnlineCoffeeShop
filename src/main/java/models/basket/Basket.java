@@ -64,7 +64,7 @@ public class Basket {
     }
 
     public void addStock(Stock stock) {
-            if (stock.getAvailability() == true) {
+            if (!stock.getAvailability()) {
                 this.stock.add(stock);
                 calculateTotal();
             }
