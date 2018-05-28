@@ -6,10 +6,7 @@ import models.stock.StockType;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 import static spark.Spark.get;
 import static spark.Spark.post;
@@ -53,12 +50,24 @@ public class AdminController {
             return null;
         }, new VelocityTemplateEngine());
 
-//
-//        post("stock-management/:id/delete", (req, res) -> {
-//            int id = Integer.parseInt(req.queryParams("id"));
-//
-//
-//        }, new VelocityTemplateEngine());
+        get("/stock-management/:id/edit", (req, res) -> {
+        String strId = req.params(":id");
+        Integer intId = Integer.parseInt(strId);
+        Stock stock = DBHelper.find(Stock.class, intId);
+        HashMap<String, Object> model = new HashMap<>();
+        model.put("stock", stock);
+        model.put("template", "templates/user/update.vtl");
+        return  new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+
+        post("stock-management/:id/delete", (req, res) -> {
+            int id = Integer.parseInt(req.params("id"));
+            Stock stock = DBHelper.find(Stock.class, id);
+            DBHelper.delete(stock);
+            res.redirect("stock-management");
+            return null;
+        }, new VelocityTemplateEngine());
 //        create functions above this line
     }
 
