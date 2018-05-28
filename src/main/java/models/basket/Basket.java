@@ -28,7 +28,6 @@ public class Basket {
         this.stock = new HashSet<>();
     }
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
