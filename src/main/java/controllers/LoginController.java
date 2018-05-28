@@ -38,11 +38,10 @@ public class LoginController {
             for (User user : users) {
                 if (user.getUsername().equals(inputtedUsername)) {
                     req.session().attribute("user", user);
-                    res.redirect("/");
-                } else {
-                    res.redirect("/account");
                 }
             }
+            res.redirect("/");
+
 
 //            List<Customer> customers = DBHelper.getAll(Customer.class);
 //            for (Customer customer : customers) {

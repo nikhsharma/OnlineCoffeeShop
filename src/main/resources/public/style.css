@@ -123,11 +123,31 @@ nav ul a {
 }
 
 .single_item {
-    height: 20vh;
+    height: 20vw;
     width: 20vw;
     border: 1px solid black;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.index_header {
+    margin: 0;
+    padding: 0;
+    height: 30vh;
+    background-image: url("https://organicfit.tv/wp-content/uploads/2018/01/pexels-photo-2.jpg");
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.3);
+    background-blend-mode: darken;
+}
+
+.index_header h1 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    position: relative;
+    top: 10vh;
+    color: white;
+    font-size: 3.5rem;
 }
