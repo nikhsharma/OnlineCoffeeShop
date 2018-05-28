@@ -18,11 +18,13 @@ public class MainController {
         Seeds.seedData();
         staticFileLocation("/public");
 
+        BasketController basketController = new BasketController();
         CustomerController userController = new CustomerController();
         LoginController loginController = new LoginController();
         MiscController miscController = new MiscController();
         CoffeeController coffeeController = new CoffeeController();
         EquipmentController equipmentController = new EquipmentController();
+        AdminController adminController = new AdminController();
 
         get("/", (req, res) -> {
             HashMap<String, Object> model = new HashMap<>();

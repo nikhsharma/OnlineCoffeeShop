@@ -27,13 +27,16 @@
                 #if($user.getClass() == $customerClass)
                 <a href="/account">My Account</a>
                 #elseif($user.getClass() == $adminClass)
-                <a href="/stock_management">Stock Management</a>
+                <a href="/stock-management">Stock Management</a>
                 #else
                 <a href="/login">Login</a>
                 #end
-
-
             </li>
+            #if($user.getClass() == $customerClass)
+            <li>
+                <a href="/basket">My Basket</a>
+            </li>
+            #end
         </ul>
     </nav>
     #parse($template)

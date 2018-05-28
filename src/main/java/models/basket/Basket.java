@@ -26,7 +26,7 @@ public class Basket {
     private double total;
 
     public Basket() {
-        this. total = total;
+        this.total = 0;
         this.stock = new HashSet<>();
     }
 
@@ -50,7 +50,7 @@ public class Basket {
         this.total = total;
     }
 
-    @OneToMany(mappedBy = "basket", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "basket", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     public Set<Stock> getStock() {
         return stock;
     }
@@ -72,7 +72,7 @@ public class Basket {
         int quantity = 0;
         ArrayList<Stock> copiedStock = new ArrayList<>(stock);
         for (Stock item : copiedStock) {
-            if (originalStock.getDescription() == item.getDescription()) {
+            if (originalStock.getDescription().equals(item.getDescription())){
                 quantity =  item.getQuantity();
                 item.setBasket(null);
                 DBHelper.save(item);
@@ -111,16 +111,17 @@ public class Basket {
     }
 
     public double calculateTotal() {
-        total = 0;
+        setTotal(0);
         for (Stock item : stock) {
             total = (item.getPrice() * item.getQuantity()) + this.total;
         }
         setTotal(total);
+        applyTenPercentDiscount();
+        DBHelper.save(this);
         return getTotal();
     }
 
     public boolean checkIfDiscountOnTotalCanBeOffered() {
-        calculateTotal();
         if (this.total >= 100.00) {
             return true;
         }

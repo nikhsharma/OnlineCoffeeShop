@@ -79,5 +79,10 @@ public class DBHelper {
         save(customer.getBasket());
     }
 
+    public static void removeStockFromBasket(Stock stock, Customer customer) {
+        customer.removeFromBasket(stock);
+        save(stock);
+        save(customer.getBasket());
+    }
 
 }

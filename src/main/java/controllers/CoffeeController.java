@@ -26,7 +26,7 @@ public class CoffeeController {
             List<Stock> allStock = DBHelper.getAll(Stock.class);
             List<Stock> coffee = new ArrayList<>();
             for (Stock item : allStock) {
-                if (item.getType() == StockType.COFFEE) {
+                if ((item.getType() == StockType.COFFEE) && (item.getBasket() == null) && (item.getOrder() == null)) {
                     coffee.add(item);
                 }
             }
