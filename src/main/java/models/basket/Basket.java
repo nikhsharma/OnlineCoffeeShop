@@ -72,7 +72,7 @@ public class Basket {
         int quantity = 0;
         ArrayList<Stock> copiedStock = new ArrayList<>(stock);
         for (Stock item : copiedStock) {
-            if (originalStock.getDescription() == item.getDescription()) {
+            if (originalStock.getName() == item.getName()) {
                 quantity =  item.getQuantity();
                 item.setBasket(null);
                 stock.remove(item);

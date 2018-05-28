@@ -13,6 +13,7 @@ import java.util.Set;
 public class Stock {
 
     private int id;
+    private String name;
     private String description;
     private StockType type;
     private double price;
@@ -26,7 +27,8 @@ public class Stock {
     public Stock() {
     }
 
-    public Stock(String description, StockType type, double price, int quantity) {
+    public Stock(String name, String description, StockType type, double price, int quantity) {
+        this.name = name;
         this.description = description;
         this.type = type;
         this.price = price;
@@ -43,6 +45,15 @@ public class Stock {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Column(name="name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
