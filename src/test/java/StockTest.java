@@ -15,6 +15,7 @@ public class StockTest {
 
     @Test
     public void stockIsAvailable() {
+        stock.checkAvailability();
         assertEquals(true, stock.checkAvailability());
     }
 }

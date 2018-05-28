@@ -64,9 +64,12 @@ public class Basket {
     }
 
     public void addStock(Stock stock) {
-        this.stock.add(stock);
-        calculateTotal();
+            if (stock.getAvailability() == true) {
+                this.stock.add(stock);
+                calculateTotal();
+            }
     }
+
 
     public void removeStock(Stock originalStock) {
         int quantity = 0;
