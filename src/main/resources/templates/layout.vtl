@@ -24,8 +24,10 @@
                 <a href="/misc">Misc</a>
             </li>
             <li>
-                #if ($user)
+                #if($user.getClass() == $customerClass)
                 <a href="/account">My Account</a>
+                #elseif($user.getClass() == $adminClass)
+                <a href="/stock_management">Stock Management</a>
                 #else
                 <a href="/login">Login</a>
                 #end
