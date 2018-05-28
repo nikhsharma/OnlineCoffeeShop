@@ -5,7 +5,12 @@
     <input type="text" id="description" name="description" required="true" value="$stock.getDescription()">
 
     <label for="type">Type:</label>
-    <input type="text" id="type" name="type" required="true" value="$stock.getType()">
+    <select name="type" id="type">
+        #foreach($item in $stockType)
+        <option value="$item">$item</option>
+        #end
+    </select>
+
 
     <label for="price">Price</label>
     <input type="number" id="price" min="0" name="price" required="true" value="$stock.getPrice()">
