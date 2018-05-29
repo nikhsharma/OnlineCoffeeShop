@@ -2,6 +2,7 @@
     <p>$item.getName()</p>
     <p>$item.getDescription()</p>
     <p>$item.getPrice()</p>
+    <p>$item.getQuantity()</p>
     #if ($item.checkAvailability())
     <form action="/basket/$item.getId()" method="post">
         <label for="quantity">Quantity</label>
