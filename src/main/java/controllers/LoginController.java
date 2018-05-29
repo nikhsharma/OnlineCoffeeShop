@@ -41,23 +41,12 @@ public class LoginController {
                 }
             }
             res.redirect("/");
+            return null;
+        }, new VelocityTemplateEngine());
 
-
-//            List<Customer> customers = DBHelper.getAll(Customer.class);
-//            for (Customer customer : customers) {
-//                if (customer.getUsername().equals(inputtedUsername)) {
-//                    req.session().attribute("user", customer);
-//                    res.redirect("/");
-//                }
-//            }
-//
-//            List<Admin> admins = DBHelper.getAll(Admin.class);
-//            for (Admin admin : admins) {
-//                if (admin.getUsername().equals(inputtedUsername)) {
-//                    req.session().attribute("user", admin);
-//                    res.redirect("/");
-//                }
-//            }
+        get("/logout", (req, res) -> {
+            req.session().removeAttribute("user");
+            res.redirect("/");
             return null;
         }, new VelocityTemplateEngine());
 
