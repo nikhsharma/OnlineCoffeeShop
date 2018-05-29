@@ -9,11 +9,12 @@
         </tr>
         #foreach ($purchase in $order.getPurchases())
         <tr>
-            <td>$purchase.getDescription()</td>
+            <td>$purchase.getName()</td>
             <td>$purchase.getQuantity()</td>
             <td>$purchase.getPrice()</td>
         </tr>
         #end
+        <td>$order.calculateTotal()</td>
         #end
     </table>
 </div>
