@@ -3,10 +3,11 @@
 </section>
 <div class="all_items">
     #foreach ($c in $coffee)
+    <a href="/coffee/$c.getId()">
     <div class="single_item" style="background-image: url($c.getImage())">
-        <p>$c.getName()</p>
+        <h1>$c.getName()</h1>
         <p>$c.getPrice()</p>
-        <a href="/coffee/$c.getId()">Show More</a>
     </div>
+    </a>
     #end
 </div>
