@@ -1,0 +1,30 @@
+<p>Hello</p>
+
+<form action="/stock-management/$stock.getId()/edit" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required="true" value="$stock.getName()">
+
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description" required="true" value="$stock.getDescription()">
+
+    <label for="type">Type:</label>
+    <select name="type" id="type">
+        #foreach($item in $stockType)
+        <option value="$item">$item</option>
+        #end
+    </select>
+
+
+    <label for="price">Price</label>
+    <input type="number" id="price" min="0" name="price" required="true" value="$stock.getPrice()">
+
+    <label for="quantity">Quantity</label>
+    <input type="number" id="quantity" min="0" name="quantity" required="true" value="$stock.getQuantity()">
+
+    <input type="submit" value="Save" class="button">
+
+</form>
+
+<form action="/stock-management/$stock.getId()/delete" method="post">
+    <input type="submit" value="Delete" class="button">
+</form>

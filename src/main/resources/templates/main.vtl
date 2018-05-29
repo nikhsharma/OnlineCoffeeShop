@@ -1,22 +1,28 @@
-#if ($user)
-<h1>Hello, $user</h1>
-#end
-<div class="main_content">
-<a href="/coffee">
-    <div class="main_link">
-        COFFEE
-    </div>
-</a>
+<section class="main_header">
+    #if ($user)
+    <h1>Hello, $user.getName()</h1>
+    #else
+    <h1>Coffee Shop</h1>
+    #end
+</section>
+<section class="main-section">
+    <div class="main_content">
+        <a href="/coffee">
+            <div class="main_link main_coffee">
+                <h1>COFFEE</h1>
+            </div>
+        </a>
 
-<a href="/equipment">
-    <div class="main_link">
-        EQUIPMENT
-    </div>
-</a>
+        <a href="/equipment">
+            <div class="main_link main_equipment">
+                <h1>EQUIPMENT</h1>
+            </div>
+        </a>
 
-<a href="/misc">
-    <div class="main_link">
-        MISC
+        <a href="/misc">
+            <div class="main_link main_misc">
+                <h1>MISC</h1>
+            </div>
+        </a>
     </div>
-</a>
-</div>
+</section>

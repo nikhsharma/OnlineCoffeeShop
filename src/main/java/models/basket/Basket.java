@@ -23,11 +23,12 @@ public class Basket {
     private int id;
     private Set<Stock> stock;
     private Customer customer;
+    private double total;
 
     public Basket() {
+        this.total = 0;
         this.stock = new HashSet<>();
     }
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,7 +41,16 @@ public class Basket {
         this.id = id;
     }
 
-    @OneToMany(mappedBy = "basket", cascade = CascadeType.PERSIST)
+    @Column(name="total")
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    @OneToMany(mappedBy = "basket", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     public Set<Stock> getStock() {
         return stock;
     }
@@ -54,14 +64,17 @@ public class Basket {
     }
 
     public void addStock(Stock stock) {
-        this.stock.add(stock);
+                this.stock.add(stock);
+                calculateTotal();
     }
+
 
     public void removeStock(Stock originalStock) {
         int quantity = 0;
         ArrayList<Stock> copiedStock = new ArrayList<>(stock);
         for (Stock item : copiedStock) {
-            if (originalStock.getDescription() == item.getDescription()) {
+
+            if (originalStock.getName() == item.getName()) {
                 quantity =  item.getQuantity();
                 item.setBasket(null);
                 DBHelper.save(item);
@@ -70,6 +83,7 @@ public class Basket {
         }
         originalStock.setQuantity(originalStock.getQuantity() + quantity);
         DBHelper.save(originalStock);
+        calculateTotal();
     }
 
     public void sell(Customer customer) {
@@ -99,12 +113,35 @@ public class Basket {
     }
 
     public double calculateTotal() {
-        double total = 0.00;
-        for (Stock item : stock ) {
-            if (item.getDescription() == item.getDescription()) {
-                total += item.getPrice();
+        setTotal(0);
+        for (Stock item : stock) {
+            total = (item.getPrice() * item.getQuantity()) + this.total;
+        }
+        setTotal(total);
+        applyTenPercentDiscount();
+        DBHelper.save(this);
+        return getTotal();
+    }
+
+    public boolean checkIfDiscountOnTotalCanBeOffered() {
+        if (this.total >= 100.00) {
+            return true;
+        }
+        return false;
+    }
+
+    public void applyTenPercentDiscount() {
+        if (checkIfDiscountOnTotalCanBeOffered()) {
+            total = total * 0.9;
+        }
+    }
+
+    public void applyBuyOneGetOneFree(Stock stock) {
+        for (Stock item : this.stock) {
+            if (item.getQuantity() % 2 == 0) {
+                total = item.getPrice() / 2;
             }
         }
-        return total;
+
     }
 }

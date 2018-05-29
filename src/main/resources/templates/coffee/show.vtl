@@ -1,4 +1,13 @@
 <div class="item_description">
     <p>$item.getDescription()</p>
     <p>$item.getPrice()</p>
+    #if ($item.checkAvailability())
+    <form action="/basket/$item.getId()" method="post">
+        <label for="quantity">Quantity</label>
+        <input type="number" id="quantity" name="quantity">
+        <input type="submit" class="button" value="Add To Basket">
+    </form>
+    #else
+    <p class="out-of-stock">Out of stock</p>
+    #end
 </div>

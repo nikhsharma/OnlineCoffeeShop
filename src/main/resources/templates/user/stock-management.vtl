@@ -1,0 +1,30 @@
+
+<div>
+
+    <a href="/stock-management/new"><input type="submit" value="Add New Item" class="button"></a>
+</div>
+<div>
+<table>
+<tr>
+    <th>Name:</th>
+    <th>Description:</th>
+    <th>Type:</th>
+    <th>Price:</th>
+    <th>Quantity:</th>
+</tr>
+
+    <tr>
+        #foreach($item in $stock)
+        <td>$item.getName()</td>
+        <td>$item.getDescription()</td>
+        <td>$item.getType()</td>
+        <td>$item.getPrice()</td>
+        <td>$item.getQuantity()</td>
+        <td> <a href="/stock-management/$item.getId()/edit"> <input type="submit" value="edit" class="button"> </a> </td>
+        <!--<td>This needs to be a button to take the user to a new page to update the stock</td>-->
+        <!--<td>This is a button that removes the item</td>-->
+    </tr>
+    #end
+
+</table>
+</div>
