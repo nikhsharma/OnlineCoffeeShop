@@ -1,19 +1,23 @@
-<p>account page for $user.getName()</p>
+<div class="orders-left">
+    <h1>Previous Orders</h1>
+    #foreach ($order in $purchaseHistory)
+    <table class="single-order">
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+        #foreach ($purchase in $order.getPurchases())
+        <tr>
+            <td>$purchase.getDescription()</td>
+            <td>$purchase.getQuantity()</td>
+            <td>$purchase.getPrice()</td>
+        </tr>
+        #end
+        #end
+    </table>
+</div>
 
-
-<table>
-    <tr>
-        <th>Item</th>
-        <th>Quantity</th>
-        <th>Price</th>
-    </tr>
-#foreach ($order in $purchaseHistory)
-    #foreach ($purchase in $order.getPurchases())
-    <tr>
-        <td>$purchase.getDescription()</td>
-        <td>$purchase.getQuantity()</td>
-        <td>$purchase.getPrice()</td>
-    </tr>
-    #end
-#end
-</table>
+<div class="orders-right">
+    <h1>Hi, $user.getName(). This is Your account</h1>
+</div>
