@@ -165,25 +165,37 @@ nav ul a {
     text-align: right;
     width: 50vw;
     height: 96vh;
-
-    font-size: 150%;
+    font-size: 1.5rem;
 }
 
 .login input {
     margin: 10px;
     padding: 5px;
     background-blend-mode: lighten;
+    font-size: 1.2rem;
 }
 
 .login-left {
     background-color: rgba(255, 255, 255, 0.2);
     background-blend-mode: darken;
     text-shadow: 0 0 10px white;
+    transition: 0.3s;
+}
+
+.login-left:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
 }
 
 .login-right {
     background-color: rgba(0, 0, 0, 0.2);
     color: white;
+    transition: 0.3s;
+}
+
+.login-right:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
 }
 
 .login-sign-up {
