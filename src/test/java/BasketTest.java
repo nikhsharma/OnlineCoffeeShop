@@ -24,11 +24,11 @@ public class BasketTest {
     @Before
     public void before() throws Exception {
         basket = new Basket();
-        stock = new Stock("Java","Java beans", StockType.COFFEE, 10.00, 5);
-        stock2 = new Stock("Kenya", "Java beanz", StockType.COFFEE, 10.00, 5);
-        stock3 = new Stock("Machine", "Machine", StockType.EQUIPMENT, 1000.00, 1);
-        stock4 = new Stock("Columbia", "Coffee", StockType.COFFEE, 15.00, 2);
-        stock5 = new Stock("Columbia", "Coffee", StockType.COFFEE, 15.00, 0);
+        stock = new Stock("Java","Java beans", StockType.COFFEE, 10.00, 5, "image");
+        stock2 = new Stock("Kenya", "Java beanz", StockType.COFFEE, 10.00, 5, "image");
+        stock3 = new Stock("Machine", "Machine", StockType.EQUIPMENT, 1000.00, 1, "image");
+        stock4 = new Stock("Columbia", "Coffee", StockType.COFFEE, 15.00, 2, "image");
+        stock5 = new Stock("Columbia", "Coffee", StockType.COFFEE, 15.00, 0, "image");
         customer = new Customer("bob", "808");
     }
 

@@ -26,6 +26,7 @@ public class BasketController {
 
         get("/basket", (req, res) -> {
             Customer currentUser = req.session().attribute("user");
+            LoginController.getLoggedInUserName(req, res);
             Basket basket = DBCustomer.showCustomersBasket(currentUser);
             HashMap<String, Object> model = new HashMap<>();
             model.put("basket", basket);

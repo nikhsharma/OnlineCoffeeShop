@@ -21,13 +21,14 @@ public class Stock {
     private boolean availability;
     private Basket basket;
     private Order order;
+    private String image;
 
 
 
     public Stock() {
     }
 
-    public Stock(String name, String description, StockType type, double price, int quantity) {
+    public Stock(String name, String description, StockType type, double price, int quantity, String image) {
         this.name = name;
         this.description = description;
         this.type = type;
@@ -36,6 +37,7 @@ public class Stock {
         this.basket = null;
         this.order = null;
         this.availability = checkAvailability();
+        this.image = image;
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -71,6 +73,18 @@ public class Stock {
 
     public void setType(StockType type) {
         this.type = type;
+    }
+
+    public boolean isAvailability() {
+        return availability;
+    }
+    @Column(name="image")
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Column(name="price")
