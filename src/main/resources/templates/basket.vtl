@@ -19,7 +19,11 @@
     <tr>
         <td></td>
         <td>Total :</td>
+        #if ($basket.checkIfDiscountOnTotalCanBeOffered())
+        <td>10% Discount applied: was $basket.calculateTotal(). Now: $basket.getDiscountedTotal()</td>
+        #else
         <td>$basket.calculateTotal()</td>
+        #end
         <td>
             <form action="/basket/purchase" method="post">
                 <input type="submit" class="button" value="Place Order">
