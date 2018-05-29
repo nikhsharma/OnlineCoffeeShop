@@ -50,6 +50,16 @@ public class LoginController {
             return null;
         }, new VelocityTemplateEngine());
 
+        post("/sign-up", (req, res) -> {
+            String name = req.queryParams("name");
+            String userName = req.queryParams("username");
+            Customer customer = new Customer(name, userName);
+            DBHelper.save(customer);
+            req.session().attribute("user", customer);
+            res.redirect("/");
+            return null;
+        });
+
     }
 
     public static User getLoggedInUserName(Request req, Response res) {

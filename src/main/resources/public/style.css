@@ -161,6 +161,7 @@ nav ul a {
     align-items: center;
 }
 
+
 /*    STOCK-MANAGEMENT   */
 
 
@@ -182,4 +183,32 @@ nav ul a {
 
 }
 
+
+
+ /*       ACCOUNT       */
+
+ .orders-left {
+    float:left;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+ }
+.single-order {
+        height: 10vw;
+        width: 50vw;
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+}
+.orders-right {
+    float: right;
+    width: 48vw;
+    text-align: center;
+    background-image: url("https://organicfit.tv/wp-content/uploads/2018/01/pexels-photo-2.jpg");
+    background-size: cover;
+    color: white;
+    height: 94vh;
+}
 
