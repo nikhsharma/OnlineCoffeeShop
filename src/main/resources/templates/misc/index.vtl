@@ -1,9 +1,10 @@
-<p>list of all misc stock</p>
-
+<section class="index_header equipment-header">
+    <h1>Misc</h1>
+</section>
 <div class="all_items">
     #foreach ($m in $misc)
-    <div class="single_item">
-        <p>$m.getDescription()</p>
+    <div class="single_item" style="background-image: url($m.getImage())">
+        <p>$m.getName()</p>
         <p>$m.getPrice()</p>
         <a href="/misc/$m.getId()">Show More</a>
     </div>

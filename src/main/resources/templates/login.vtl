@@ -1,10 +1,20 @@
-<form action="/login" method="post">
-    <label for="username">Your username: </label>
-    <input type="text" name="username" id="username">
-    <button type="submit">Submit name</button>
-</form>
-
-#foreach ($user in $users)
-<p>$user.getName()</p>
-<p>$user.getUsername()</p>
-#end
+<div class="login-sign-up">
+    <div class="login">
+        <h1>Login</h1>
+        <form action="/login" method="post" class="login-form">
+            <label for="username">Your username: </label>
+            <input type="text" name="username" id="username">
+            <button type="submit">Submit Username</button>
+        </form>
+    </div>
+    <div class="sign-up">
+        <h1>Sign Up</h1>
+        <form action="/sign-up" method="post" class="sign-up-form">
+            <label for="name">Your name: </label>
+            <input type="text" name="name" id="name">
+            <label for="username">Your username: </label>
+            <input type="text" name="username" id="username">
+            <button type="submit">Submit Username</button>
+        </form>
+    </div>
+</div>

@@ -1,6 +1,8 @@
 package db;
 
+import com.sun.tools.corba.se.idl.constExpr.Or;
 import javafx.scene.control.CustomMenuItem;
+import models.basket.Basket;
 import models.stock.Order;
 import models.stock.Stock;
 import models.users.Customer;
@@ -30,6 +32,23 @@ public class DBCustomer {
             session.close();
         }
         return purchaseHistory;
+    }
+
+    public static Basket showCustomersBasket(Customer customer) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        Basket foundBasket = null;
+
+        try {
+            Criteria cr = session.createCriteria(Basket.class);
+            cr.createAlias("customer", "basketCustomer");
+            cr.add(Restrictions.eq("basketCustomer.id", customer.getId()));
+            foundBasket = (Basket)cr.uniqueResult();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return foundBasket;
     }
 
 }

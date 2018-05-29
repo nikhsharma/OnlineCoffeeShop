@@ -11,8 +11,8 @@ public class StockTest {
 
     @Before
     public void before() {
-        stock = new Stock("Mocha", "A Type of coffee", StockType.COFFEE, 4.50, 1);
-        stock2 = new Stock("Mocha", "A Type of coffee", StockType.COFFEE, 4.50, 0);
+        stock = new Stock("Mocha", "A Type of coffee", StockType.COFFEE, 4.50, 1, "image");
+        stock2 = new Stock("Mocha", "A Type of coffee", StockType.COFFEE, 4.50, 0, "image");
     }
 
     @Test

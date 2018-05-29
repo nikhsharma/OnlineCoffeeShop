@@ -3,6 +3,8 @@ package controllers;
 import db.DBHelper;
 import models.stock.Stock;
 import models.stock.StockType;
+import models.users.Admin;
+import models.users.Customer;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -22,6 +24,9 @@ public class AdminController {
             List<Stock> stock = DBHelper.getAll(Stock.class);
             HashMap<String, Object> model = new HashMap<>();
             model.put("stock", stock);
+            model.put("user", req.session().attribute("user"));
+            model.put("customerClass", Customer.class);
+            model.put("adminClass", Admin.class);
             model.put("template", "templates/user/stock-management.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
@@ -29,11 +34,14 @@ public class AdminController {
 
 //    new
         get("stock-management/new", (req, res) -> {
-        HashMap<String, Object> model = new HashMap<>();
-        StockType arr[] = StockType.values();
-        model.put("stockType", arr);
-        model.put("template", "templates/user/create.vtl");
-        return new ModelAndView(model, "templates/layout.vtl");
+            HashMap<String, Object> model = new HashMap<>();
+            StockType arr[] = StockType.values();
+            model.put("stockType", arr);
+            model.put("user", req.session().attribute("user"));
+            model.put("customerClass", Customer.class);
+            model.put("adminClass", Admin.class);
+            model.put("template", "templates/user/create.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
 // create
@@ -45,7 +53,8 @@ public class AdminController {
             String type = req.queryParams("type");
             double price = Double.parseDouble(req.queryParams("price"));
             int quantity = Integer.parseInt(req.queryParams("quantity"));
-            Stock stock = new Stock(name, description, stockType, price, quantity);
+            String image = req.queryParams("image");
+            Stock stock = new Stock(name, description, stockType, price, quantity, image);
             DBHelper.save(stock);
             res.redirect("/stock-management");
             return null;
@@ -58,6 +67,9 @@ public class AdminController {
         HashMap<String, Object> model = new HashMap<>();
         StockType arr[] = StockType.values();
         model.put("stockType", arr);
+        model.put("user", req.session().attribute("user"));
+        model.put("customerClass", Customer.class);
+        model.put("adminClass", Admin.class);
         model.put("stock", stock);
         model.put("template", "templates/user/update.vtl");
         return  new ModelAndView(model, "templates/layout.vtl");
@@ -74,15 +86,18 @@ public class AdminController {
             String type = req.queryParams("type");
             double price = Double.parseDouble(req.queryParams("price"));
             int quantity = Integer.parseInt(req.queryParams("quantity"));
+            String image = req.queryParams("image");
             stock.setName(name);
             stock.setDescription(description);
             stock.setType(stockType);
             stock.setPrice(price);
             stock.setQuantity(quantity);
+            stock.setImage(image);
             DBHelper.save(stock);
             res.redirect("/stock-management");
             return null;
         }, new VelocityTemplateEngine());
+
 
 
         post("stock-management/:id/delete", (req, res) -> {

@@ -24,10 +24,12 @@ public class Basket {
     private Set<Stock> stock;
     private Customer customer;
     private double total;
+    private double discountedTotal;
 
     public Basket() {
-        this. total = total;
+        this.total = 0;
         this.stock = new HashSet<>();
+        this.discountedTotal = 0;
     }
 
     @Id
@@ -50,7 +52,7 @@ public class Basket {
         this.total = total;
     }
 
-    @OneToMany(mappedBy = "basket", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "basket", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     public Set<Stock> getStock() {
         return stock;
     }
@@ -64,10 +66,8 @@ public class Basket {
     }
 
     public void addStock(Stock stock) {
-            if (!stock.getAvailability()) {
                 this.stock.add(stock);
                 calculateTotal();
-            }
     }
 
 
@@ -75,9 +75,11 @@ public class Basket {
         int quantity = 0;
         ArrayList<Stock> copiedStock = new ArrayList<>(stock);
         for (Stock item : copiedStock) {
-            if (originalStock.getName() == item.getName()) {
+
+            if (originalStock.getName().equals(item.getName())) {
                 quantity =  item.getQuantity();
                 item.setBasket(null);
+                DBHelper.save(item);
                 stock.remove(item);
             }
         }
@@ -112,17 +114,27 @@ public class Basket {
         this.customer = customer;
     }
 
+    @Column(name = "discountedTotal")
+    public double getDiscountedTotal() {
+        return discountedTotal;
+    }
+
+    public void setDiscountedTotal(double discountedPrice) {
+        this.discountedTotal = discountedPrice;
+    }
+
     public double calculateTotal() {
-        total = 0;
+        setTotal(0);
         for (Stock item : stock) {
             total = (item.getPrice() * item.getQuantity()) + this.total;
         }
         setTotal(total);
+        applyTenPercentDiscount();
+        DBHelper.save(this);
         return getTotal();
     }
 
     public boolean checkIfDiscountOnTotalCanBeOffered() {
-        calculateTotal();
         if (this.total >= 100.00) {
             return true;
         }
@@ -131,7 +143,7 @@ public class Basket {
 
     public void applyTenPercentDiscount() {
         if (checkIfDiscountOnTotalCanBeOffered()) {
-            total = total * 0.9;
+            this.discountedTotal = total * 0.9;
         }
     }
 
