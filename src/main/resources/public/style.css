@@ -209,6 +209,7 @@ nav ul a {
 
 
 .table {
+    padding: 10px;
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -227,7 +228,7 @@ height: 60px;
 }
 
 .table-header {
-
+    padding: 5px;
 }
 
 .table-data {

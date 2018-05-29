@@ -33,6 +33,7 @@ public class BasketController {
             model.put("customerClass", Customer.class);
             model.put("adminClass", Admin.class);
             model.put("basket", basket);
+            model.put("prettyPrice", String.format("£" + "%.2f", basket.getDiscountedTotal()));
             model.put("template", "templates/basket.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());

@@ -156,7 +156,7 @@ public class Basket {
 
     }
 
-    public String prettyPrice(){
+    public String basketPrettyPrice(){
         return String.format("£" + "%.2f" + getTotal());
     }
 }
