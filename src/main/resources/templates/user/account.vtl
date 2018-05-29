@@ -1,5 +1,8 @@
+
+
 <div class="orders-left">
     <h1>Previous Orders</h1>
+    #if ($purchaseHistory.size() != 0)
     #foreach ($order in $purchaseHistory)
     <table class="single-order">
         <tr>
@@ -17,7 +20,14 @@
         <td>$order.calculateTotal()</td>
         #end
     </table>
+    #else
+    <h1>You have no previous orders :(</h1>
+    #end
 </div>
+
+
+
+
 
 <div class="orders-right">
     <h1>Hi, $user.getName(). This is Your account</h1>

@@ -1,3 +1,6 @@
+
+#if ($basket.getStock().size() != 0)
+
 <table>
     <tr>
         <th>Description</th>
@@ -32,3 +35,8 @@
     </tr>
 
 </table>
+
+
+#else
+    <h1>Your basket is empty :(</h1>
+#end
