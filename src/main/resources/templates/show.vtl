@@ -2,6 +2,7 @@
     <p>$item.getName()</p>
     <p>$item.getDescription()</p>
     <p>$item.getPrice()</p>
+    <p>$item.getQuantity()</p>
     #if ($user.getClass() == $adminClass)
     <a href="/stock-management/$item.getId()/edit"> <input type="submit" value="edit" class="button"> </a>
     #elseif ($item.checkAvailability())
@@ -11,6 +12,6 @@
         <input type="submit" class="button" value="Add To Basket">
     </form>
     #else
-    <p class="out-of-stock">Out of Stock</p>
+    <p class="out-of-stock">Out of stock</p>
     #end
 </div>

@@ -47,7 +47,7 @@ public class EquipmentController {
             model.put("item", item);
             model.put("customerClass", Customer.class);
             model.put("adminClass", Admin.class);
-            model.put("template", "templates/equipment/show.vtl");
+            model.put("template", "templates/show.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
     }
