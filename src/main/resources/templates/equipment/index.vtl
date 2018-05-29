@@ -4,10 +4,11 @@
 
 <div class="all_items">
     #foreach ($e in $equipment)
+    <a href="/equipment/$e.getId()">
     <div class="single_item" style="background-image: url($e.getImage())">
-        <p>$e.getName()</p>
+        <h1>$e.getName()</h1>
         <p>$e.prettyPrice()</p>
-        <a href="/equipment/$e.getId()">Show More</a>
     </div>
+    </a>
     #end
 </div>

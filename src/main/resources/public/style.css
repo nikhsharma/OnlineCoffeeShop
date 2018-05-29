@@ -125,11 +125,26 @@ nav ul a {
 .single_item {
     height: 20vw;
     width: 20vw;
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-size: cover;
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: darken;
+    color: white;
+    transition: 0.3s;
+}
+
+.single_item:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+
+}
+
+a {
+    text-decoration: none;
 }
 
 .index_header {
@@ -150,6 +165,27 @@ nav ul a {
     top: 10vh;
     color: white;
     font-size: 3.5rem;
+}
+
+
+/*        SHOW       */
+
+.item-content {
+    display: flex;
+    justify-content: center;
+}
+
+
+.item-image {
+    height: 60vh;
+    width: 40vw;
+    background-size: cover;
+    background-position: center;
+}
+
+.item_description {
+width: 40vw;
+margin-left: 10vw;
 }
 
 
