@@ -1,11 +1,12 @@
-<p>Hello</p>
 
-<form action="/stock-management/$stock.getId()/edit" method="post">
+
+<form action="/stock-management/$stock.getId()/edit" method="post" id="form">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required="true" value="$stock.getName()">
 
     <label for="description">Description:</label>
-    <input type="text" id="description" name="description" required="true" value="$stock.getDescription()">
+    <textarea form="form" id="description" name="description" required="true" value="$stock.getDescription()">$stock.getDescription()
+    </textarea>
 
     <label for="type">Type:</label>
     <select name="type" id="type">
@@ -26,7 +27,8 @@
     <input type="number" id="quantity" min="0" name="quantity" required="true" value="$stock.getQuantity()">
 
     <label for="image">Image:</label>
-    <input type="url" id="image" name="image">
+    <input type="url" id="image" name="image" value="$stock.getImage()">
+
 
     <input type="submit" value="Save" class="button">
 
