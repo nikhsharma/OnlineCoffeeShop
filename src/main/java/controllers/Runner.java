@@ -28,8 +28,8 @@ public class Runner {
         Admin admin1 = new Admin("bob", "808");
         DBHelper.save(admin1);
 
-        Stock stock1 = new Stock("Coffee", StockType.COFFEE, 10.00, 5);
-        Stock stock2 = new Stock("French Press", StockType.EQUIPMENT, 10.00, 5);
+        Stock stock1 = new Stock("Java", "Coffee", StockType.COFFEE, 10.00, 5);
+        Stock stock2 = new Stock("Stiff", "French Press", StockType.EQUIPMENT, 10.00, 5);
         DBHelper.save(stock1);
         DBHelper.save(stock2);
 
@@ -77,7 +77,7 @@ public class Runner {
         List<Order> custOrder4 = DBCustomer.showPurchaseHistory(customer1);
         List<Stock> itemsInOrde4 = DBOrder.showItemsInOrder(DBHelper.find(Order.class, 2));
         Set<Order> localcustpurchasehistor4 = customer1.getPurchaseHistory();
-        foundBasket.calculateTotal();
+
 
     }
 }

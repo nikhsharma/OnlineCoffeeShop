@@ -45,36 +45,57 @@ public class AdminController {
         }, new VelocityTemplateEngine());
 
 // create
-        post("/stock-management", (req, res) -> {
+        post("/stock-management",(req, res) -> {
+            String name = req.queryParams("name");
             String description = req.queryParams("description");
             String typeDescription = req.queryParams("type");
             StockType stockType = StockType.valueOf(typeDescription);
             String type = req.queryParams("type");
             double price = Double.parseDouble(req.queryParams("price"));
             int quantity = Integer.parseInt(req.queryParams("quantity"));
-            Stock stock = new Stock(description, stockType, price, quantity);
+            Stock stock = new Stock(name, description, stockType, price, quantity);
             DBHelper.save(stock);
             res.redirect("/stock-management");
             return null;
         }, new VelocityTemplateEngine());
 
         get("/stock-management/:id/edit", (req, res) -> {
+        String strId = req.params(":id");
+        Integer intId = Integer.parseInt(strId);
+        Stock stock = DBHelper.find(Stock.class, intId);
+        HashMap<String, Object> model = new HashMap<>();
+        StockType arr[] = StockType.values();
+        model.put("stockType", arr);
+        model.put("user", req.session().attribute("user"));
+        model.put("customerClass", Customer.class);
+        model.put("adminClass", Admin.class);
+        model.put("stock", stock);
+        model.put("template", "templates/user/update.vtl");
+        return  new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+
+        post("/stock-management/:id/edit", (req, res) -> {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Stock stock = DBHelper.find(Stock.class, intId);
-            HashMap<String, Object> model = new HashMap<>();
-            model.put("user", req.session().attribute("user"));
-            model.put("customerClass", Customer.class);
-            model.put("adminClass", Admin.class);
-            model.put("stock", stock);
-            model.put("template", "templates/user/update.vtl");
-            return new ModelAndView(model, "templates/layout.vtl");
+            String name = req.queryParams("name");
+            String description = req.queryParams("description");
+            String typeDescription = req.queryParams("type");
+            StockType stockType = StockType.valueOf(typeDescription);
+            String type = req.queryParams("type");
+            double price = Double.parseDouble(req.queryParams("price"));
+            int quantity = Integer.parseInt(req.queryParams("quantity"));
+            stock.setName(name);
+            stock.setDescription(description);
+            stock.setType(stockType);
+            stock.setPrice(price);
+            stock.setQuantity(quantity);
+            DBHelper.save(stock);
+            res.redirect("/stock-management");
+            return null;
         }, new VelocityTemplateEngine());
 
-//        post("/stock-management/:id/edit", (req, res) -> {
-//
-//
-//        }, new VelocityTemplateEngine());
 
 
         post("stock-management/:id/delete", (req, res) -> {
