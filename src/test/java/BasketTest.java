@@ -18,15 +18,17 @@ public class BasketTest {
     private Stock stock2;
     private Stock stock3;
     private Stock stock4;
+    private Stock stock5;
     private Customer customer;
 
     @Before
     public void before() throws Exception {
         basket = new Basket();
-        stock = new Stock("Java beans", StockType.COFFEE, 10.00, 5);
-        stock2 = new Stock("Java beanz", StockType.COFFEE, 10.00, 5);
-        stock3 = new Stock("Machine", StockType.EQUIPMENT, 1000.00, 1);
-        stock4 = new Stock("Coffee", StockType.COFFEE, 15.00, 2);
+        stock = new Stock("Java","Java beans", StockType.COFFEE, 10.00, 5);
+        stock2 = new Stock("Kenya", "Java beanz", StockType.COFFEE, 10.00, 5);
+        stock3 = new Stock("Machine", "Machine", StockType.EQUIPMENT, 1000.00, 1);
+        stock4 = new Stock("Columbia", "Coffee", StockType.COFFEE, 15.00, 2);
+        stock5 = new Stock("Columbia", "Coffee", StockType.COFFEE, 15.00, 0);
         customer = new Customer("bob", "808");
     }
 
@@ -36,6 +38,12 @@ public class BasketTest {
         ArrayList<Stock> basketstock = new ArrayList<>(basket.getStock());
         assertEquals(1, basket.stockCount());
         assertEquals(5, basketstock.get(0).getQuantity());
+    }
+
+    @Test
+    public void cannotAddToBasketQuantityIs0(){
+        basket.addStock(stock5);
+        assertEquals(0, basket.stockCount());
     }
 
     @Test
@@ -100,7 +108,4 @@ public class BasketTest {
         basket.applyBuyOneGetOneFree(stock3);
         assertEquals(1000, basket.getTotal(), 0.1);
     }
-
-
-
 }

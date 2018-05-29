@@ -53,7 +53,7 @@ public class Customer extends User {
     }
 
     public void addToBasket(Stock stock, int quantity) {
-        Stock stockToAdd = new Stock(stock.getDescription(), stock.getType(), stock.getPrice(), quantity);
+        Stock stockToAdd = new Stock(stock.getName(), stock.getDescription(), stock.getType(), stock.getPrice(), quantity);
         stockToAdd.setBasket(this.basket);
         DBHelper.save(stockToAdd);
 //        DBCustomer.showCustomersBasket(this).addStock(stockToAdd);

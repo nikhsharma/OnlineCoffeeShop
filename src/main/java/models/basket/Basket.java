@@ -64,15 +64,19 @@ public class Basket {
     }
 
     public void addStock(Stock stock) {
-        this.stock.add(stock);
-        calculateTotal();
+            if (!stock.getAvailability()) {
+                this.stock.add(stock);
+                calculateTotal();
+            }
     }
+
 
     public void removeStock(Stock originalStock) {
         int quantity = 0;
         ArrayList<Stock> copiedStock = new ArrayList<>(stock);
         for (Stock item : copiedStock) {
-            if (originalStock.getDescription().equals(item.getDescription())){
+
+            if (originalStock.getName() == item.getName()) {
                 quantity =  item.getQuantity();
                 item.setBasket(null);
                 DBHelper.save(item);

@@ -18,7 +18,7 @@ public class CustomerTest {
     @Before
     public void before() {
         customer = new Customer("Bob", "808");
-        stock = new Stock("Java beans", StockType.COFFEE, 10.00, 5);
+        stock = new Stock("java","Java beans", StockType.COFFEE, 10.00, 5);
     }
 
 

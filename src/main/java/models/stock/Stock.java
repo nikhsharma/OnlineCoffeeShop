@@ -13,11 +13,12 @@ import java.util.Set;
 public class Stock {
 
     private int id;
+    private String name;
     private String description;
     private StockType type;
     private double price;
     private int quantity;
-    private Boolean available;
+    private Boolean availability;
     private Basket basket;
     private Order order;
 
@@ -26,13 +27,15 @@ public class Stock {
     public Stock() {
     }
 
-    public Stock(String description, StockType type, double price, int quantity) {
+    public Stock(String name, String description, StockType type, double price, int quantity) {
+        this.name = name;
         this.description = description;
         this.type = type;
         this.price = price;
         this.quantity = quantity;
         this.basket = null;
         this.order = null;
+        this.availability = true;
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,6 +46,15 @@ public class Stock {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Column(name="name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -89,12 +101,21 @@ public class Stock {
         this.basket = basket;
     }
 
-    public Boolean getAvailable() {
-        return available;
+    @Column(name="availability")
+    public boolean getAvailability() {
+        return availability;
     }
 
-    public void setAvailable(Boolean available) {
-        this.available = available;
+    public void setAvailability(boolean availability) {
+        this.availability = availability;
+    }
+
+    public boolean checkAvailability() {
+        if (this.quantity == 0) {
+            setAvailability(false);
+            return getAvailability();
+        }
+        return getAvailability();
     }
 
     @ManyToOne
