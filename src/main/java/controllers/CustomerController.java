@@ -22,6 +22,7 @@ public class CustomerController {
     private void setUpEndPoints(){
         get("/account", (req, res) -> {
             HashMap<String, Object> model = new HashMap<>();
+            LoginController.getLoggedInUserName(req, res);
             Customer loggedInUser = req.session().attribute("user");
             Set<Order> purchaseHistory = loggedInUser.getPurchaseHistory();
             model.put("user", loggedInUser);
