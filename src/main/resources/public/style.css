@@ -168,6 +168,27 @@ a {
 }
 
 
+/*        SHOW       */
+
+.item-content {
+    display: flex;
+    justify-content: center;
+}
+
+
+.item-image {
+    height: 60vh;
+    width: 40vw;
+    background-size: cover;
+    background-position: center;
+}
+
+.item_description {
+width: 40vw;
+margin-left: 10vw;
+}
+
+
 /*       LOGIN       */
 
 .login {
