@@ -1,19 +1,25 @@
 <div class="login-sign-up">
-    <div class="login">
+    <div class="login login-left">
         <h1>Login</h1>
         <form action="/login" method="post" class="login-form">
+            <div>
             <label for="username">Your username: </label>
             <input type="text" name="username" id="username">
+            </div>
             <button type="submit">Submit Username</button>
         </form>
     </div>
-    <div class="sign-up">
+    <div class="login login-right">
         <h1>Sign Up</h1>
         <form action="/sign-up" method="post" class="sign-up-form">
+            <div>
             <label for="name">Your name: </label>
             <input type="text" name="name" id="name">
+            </div>
+            <div>
             <label for="username">Your username: </label>
             <input type="text" name="username" id="username">
+            </div>
             <button type="submit">Submit Username</button>
         </form>
     </div>
