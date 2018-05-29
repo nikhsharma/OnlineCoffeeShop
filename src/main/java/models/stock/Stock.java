@@ -18,7 +18,7 @@ public class Stock {
     private StockType type;
     private double price;
     private int quantity;
-    private Boolean availability;
+    private boolean availability;
     private Basket basket;
     private Order order;
 
@@ -35,7 +35,7 @@ public class Stock {
         this.quantity = quantity;
         this.basket = null;
         this.order = null;
-        this.availability = true;
+        this.availability = checkAvailability();
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -111,11 +111,13 @@ public class Stock {
     }
 
     public boolean checkAvailability() {
-        if (this.quantity == 0) {
+        if (this.quantity <= 0) {
             setAvailability(false);
-            return getAvailability();
+             getAvailability();
+        } else {
+            setAvailability(true);
         }
-        return getAvailability();
+        return availability;
     }
 
     @ManyToOne
