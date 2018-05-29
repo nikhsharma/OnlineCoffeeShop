@@ -1,1 +1,19 @@
 <p>account page for $user.getName()</p>
+
+
+<table>
+    <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Price</th>
+    </tr>
+#foreach ($order in $purchaseHistory)
+    #foreach ($purchase in $order.getPurchases())
+    <tr>
+        <td>$purchase.getDescription()</td>
+        <td>$purchase.getQuantity()</td>
+        <td>$purchase.getPrice()</td>
+    </tr>
+    #end
+#end
+</table>
