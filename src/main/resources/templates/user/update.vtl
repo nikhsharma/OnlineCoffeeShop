@@ -10,7 +10,11 @@
     <label for="type">Type:</label>
     <select name="type" id="type">
         #foreach($item in $stockType)
-        <option value="$item">$item</option>
+        <option value="$item"
+                #if ($stock.getType() == $item)
+                selected="selected"
+            #end>
+            $item</option>
         #end
     </select>
 
