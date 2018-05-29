@@ -23,8 +23,6 @@ public class CustomerTest {
         stock2 = new Stock("java","Java beans", StockType.COFFEE, 10.00, 0);
     }
 
-
-
     @Test
     public void canAddItemToCustomersBasket() {
         customer.addToBasket(stock, 2);
