@@ -37,6 +37,11 @@
                 <a href="/basket">MY BASKET</a>
             </li>
             #end
+            #if ($user)
+            <li>
+                <a href="/logout">LOGOUT</a>
+            </li>
+            #end
         </ul>
     </nav>
     #parse($template)
