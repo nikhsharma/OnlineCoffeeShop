@@ -39,6 +39,15 @@ public class Order {
         return copy;
     }
 
+    public double calculateTotal(){
+        double total = 0;
+        for (Stock item : purchases) {
+            total += item.getQuantity() * item.getPrice();
+        }
+        return total;
+    }
+
+
     public void setPurchases(Set<Stock> purchases) {
         this.purchases = purchases;
     }
@@ -52,4 +61,6 @@ public class Order {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+
 }

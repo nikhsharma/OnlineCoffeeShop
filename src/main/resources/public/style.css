@@ -162,6 +162,27 @@ nav ul a {
 }
 
 
+/*    STOCK-MANAGEMENT   */
+
+
+.table {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    all_items: center;
+
+}
+
+.table-header {
+    font-size: 36px;
+}
+
+.table-data {
+    font-family: monospace;
+     border-bottom: 1px solid #808000;
+
+}
+
  /*       ACCOUNT       */
 
  .orders-left {
@@ -188,3 +209,4 @@ nav ul a {
     color: white;
     height: 94vh;
 }
+
