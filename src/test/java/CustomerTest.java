@@ -65,5 +65,10 @@ public class CustomerTest {
         customer.purchase();
         ArrayList<Order> orderInPurchaseHistory = new ArrayList<>(customer.getPurchaseHistory());
         assertEquals(20.00, orderInPurchaseHistory.get(0).calculateTotal(), 0.1);
+        customer.addToBasket(stock, 1);
+        customer.purchase();
+        ArrayList<Order> orderInPurchaseHistory2 = new ArrayList<>(customer.getPurchaseHistory());
+        assertEquals(10.00, orderInPurchaseHistory2.get(0).calculateTotal(), 0.1);
+
     }
 }

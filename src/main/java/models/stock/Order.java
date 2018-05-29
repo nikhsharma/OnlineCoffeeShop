@@ -12,12 +12,10 @@ public class Order {
     private int id;
     private Set<Stock> purchases;
     private Customer customer;
-    private double total;
 
     public Order(Customer customer) {
         this.purchases = null;
         this.customer = customer;
-        this.total = total;
     }
 
     public Order() {
@@ -42,10 +40,11 @@ public class Order {
     }
 
     public double calculateTotal(){
+        double total = 0;
         for (Stock item : purchases) {
-            total = item.getQuantity() + item.getPrice();
+            total += item.getQuantity() * item.getPrice();
         }
-            return total;
+        return total;
     }
 
 
