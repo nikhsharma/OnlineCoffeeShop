@@ -44,6 +44,9 @@ public class Order {
         for (Stock item : purchases) {
             total += item.getQuantity() * item.getPrice();
         }
+        if (total >= 100.00 ){
+            total = total * 0.9;
+        }
         return String.format("£" + "%.2f", total);
     }
 
