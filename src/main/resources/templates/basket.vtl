@@ -20,7 +20,7 @@
         <td></td>
         <td>Total :</td>
         #if ($basket.checkIfDiscountOnTotalCanBeOffered())
-        <td>10% Discount applied: was $basket.calculateTotal(). Now: $basket.getDiscountedTotal()</td>
+        <td><strike>£$basket.calculateTotal() </strike> £$basket.getDiscountedTotal()</td>
         #else
         <td>$basket.calculateTotal()</td>
         #end
