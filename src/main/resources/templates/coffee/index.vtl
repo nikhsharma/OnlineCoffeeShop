@@ -4,7 +4,7 @@
 <div class="all_items">
     #foreach ($c in $coffee)
     <div class="single_item">
-        <p>$c.getDescription()</p>
+        <p>$c.getName()</p>
         <p>$c.getPrice()</p>
         <a href="/coffee/$c.getId()">Show More</a>
     </div>

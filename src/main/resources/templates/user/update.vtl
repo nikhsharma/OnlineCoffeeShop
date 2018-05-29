@@ -10,7 +10,11 @@
     <label for="type">Type:</label>
     <select name="type" id="type">
         #foreach($item in $stockType)
-        <option value="$item">$item</option>
+        <option value="$item"
+                #if ($stock.getType() == $item)
+                selected="selected"
+            #end>
+            $item</option>
         #end
     </select>
 
@@ -20,6 +24,9 @@
 
     <label for="quantity">Quantity</label>
     <input type="number" id="quantity" min="0" name="quantity" required="true" value="$stock.getQuantity()">
+
+    <label for="image">Image:</label>
+    <input type="url" id="image" name="image">
 
     <input type="submit" value="Save" class="button">
 

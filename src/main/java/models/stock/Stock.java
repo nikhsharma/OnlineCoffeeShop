@@ -18,16 +18,17 @@ public class Stock {
     private StockType type;
     private double price;
     private int quantity;
-    private Boolean availability;
+    private boolean availability;
     private Basket basket;
     private Order order;
+    private String image;
 
 
 
     public Stock() {
     }
 
-    public Stock(String name, String description, StockType type, double price, int quantity) {
+    public Stock(String name, String description, StockType type, double price, int quantity, String image) {
         this.name = name;
         this.description = description;
         this.type = type;
@@ -35,7 +36,8 @@ public class Stock {
         this.quantity = quantity;
         this.basket = null;
         this.order = null;
-        this.availability = true;
+        this.availability = checkAvailability();
+        this.image = image;
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -71,6 +73,18 @@ public class Stock {
 
     public void setType(StockType type) {
         this.type = type;
+    }
+
+    public boolean isAvailability() {
+        return availability;
+    }
+    @Column(name="image")
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Column(name="price")
@@ -111,11 +125,13 @@ public class Stock {
     }
 
     public boolean checkAvailability() {
-        if (this.quantity == 0) {
+        if (this.quantity <= 0) {
             setAvailability(false);
-            return getAvailability();
+             getAvailability();
+        } else {
+            setAvailability(true);
         }
-        return getAvailability();
+        return availability;
     }
 
     @ManyToOne
