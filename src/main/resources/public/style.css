@@ -244,21 +244,24 @@ margin-left: 10vw;
 /*    STOCK-MANAGEMENT   */
 
 
-.table, .basket-table {
+.table {
     padding: 10px;
+    margin: 1px;
     display: flex;
     flex-direction: column;
     text-align: left;
     all_items: center;
 
+
 }
 
 .create-button{
+padding 50px;
 text-align: left;
 border-radius: 10%;
 border: 1px, solid red;
-width: 60px;
-height: 60px;
+
+height: 20px;
 
 }
 
@@ -267,7 +270,8 @@ height: 60px;
 }
 
 .table-data {
-     border-bottom: groove 1px ;
+padding: 10px
+     border-bottom: white solid 1px ;
 ;
 
 }
@@ -325,6 +329,27 @@ textarea {
     height: 94vh;
     background-color: rgba(0, 0, 0, 0.3);
     background-blend-mode: darken;
+}
+
+/*      BASKET  */
+
+.basket-table {
+  display: flex;
+  padding: 50px;
+    justify-content: center;
+  align-items; center;
+  text-align: left;
+}
+
+th, td {
+padding: 3px;
+border-bottom: white solid 1px;
+}
+
+.basket-total{
+
+display: flex;
+justify-content: right;
 }
 
 
