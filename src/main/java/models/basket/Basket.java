@@ -24,10 +24,12 @@ public class Basket {
     private Set<Stock> stock;
     private Customer customer;
     private double total;
+    private double discountedTotal;
 
     public Basket() {
         this.total = 0;
         this.stock = new HashSet<>();
+        this.discountedTotal = 0;
     }
 
     @Id
@@ -74,7 +76,7 @@ public class Basket {
         ArrayList<Stock> copiedStock = new ArrayList<>(stock);
         for (Stock item : copiedStock) {
 
-            if (originalStock.getName() == item.getName()) {
+            if (originalStock.getName().equals(item.getName())) {
                 quantity =  item.getQuantity();
                 item.setBasket(null);
                 DBHelper.save(item);
@@ -112,6 +114,15 @@ public class Basket {
         this.customer = customer;
     }
 
+    @Column(name = "discountedTotal")
+    public double getDiscountedTotal() {
+        return discountedTotal;
+    }
+
+    public void setDiscountedTotal(double discountedPrice) {
+        this.discountedTotal = discountedPrice;
+    }
+
     public double calculateTotal() {
         setTotal(0);
         for (Stock item : stock) {
@@ -132,7 +143,7 @@ public class Basket {
 
     public void applyTenPercentDiscount() {
         if (checkIfDiscountOnTotalCanBeOffered()) {
-            total = total * 0.9;
+            this.discountedTotal = total * 0.9;
         }
     }
 

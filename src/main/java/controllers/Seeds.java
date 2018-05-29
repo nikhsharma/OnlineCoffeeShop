@@ -15,13 +15,13 @@ public class Seeds {
         Admin admin1 = new Admin("Bob", "808");
         DBHelper.save(admin1);
 
-        Stock stock1 = new Stock("java", "Java beans", StockType.COFFEE, 10.00, 5);
+        Stock stock1 = new Stock("java", "Java beans", StockType.COFFEE, 10.00, 5, "image");
         DBHelper.save(stock1);
 
-        Stock stock2 = new Stock("stiff", "French Press", StockType.EQUIPMENT, 15.00, 4);
+        Stock stock2 = new Stock("stiff", "French Press", StockType.EQUIPMENT, 15.00, 4, "image");
         DBHelper.save(stock2);
 
-        Stock stock3 = new Stock("mug", "Mug", StockType.MISC, 5.00, 8);
+        Stock stock3 = new Stock("mug", "Mug", StockType.MISC, 5.00, 8, "image");
         DBHelper.save(stock3);
     }
 }

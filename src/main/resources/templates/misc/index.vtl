@@ -3,8 +3,8 @@
 </section>
 <div class="all_items">
     #foreach ($m in $misc)
-    <div class="single_item">
-        <p>$m.getDescription()</p>
+    <div class="single_item" style="background-image: url($m.getImage())">
+        <p>$m.getName()</p>
         <p>$m.getPrice()</p>
         <a href="/misc/$m.getId()">Show More</a>
     </div>

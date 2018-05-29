@@ -5,7 +5,7 @@
 <div class="all_items">
     #foreach ($e in $equipment)
     <div class="single_item">
-        <p>$e.getDescription()</p>
+        <p>$e.getName()</p>
         <p>$e.getPrice()</p>
         <a href="/equipment/$e.getId()">Show More</a>
     </div>

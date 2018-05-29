@@ -28,8 +28,8 @@ public class Runner {
         Admin admin1 = new Admin("bob", "808");
         DBHelper.save(admin1);
 
-        Stock stock1 = new Stock("Java", "Coffee", StockType.COFFEE, 10.00, 5);
-        Stock stock2 = new Stock("Stiff", "French Press", StockType.EQUIPMENT, 10.00, 5);
+        Stock stock1 = new Stock("Java", "Coffee", StockType.COFFEE, 10.00, 5, "image");
+        Stock stock2 = new Stock("Stiff", "French Press", StockType.EQUIPMENT, 10.00, 5, "image");
         DBHelper.save(stock1);
         DBHelper.save(stock2);
 
