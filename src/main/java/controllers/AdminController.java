@@ -74,7 +74,6 @@ public class AdminController {
         return  new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-
         post("/stock-management/:id/edit", (req, res) -> {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);

@@ -76,7 +76,7 @@ public class Basket {
         ArrayList<Stock> copiedStock = new ArrayList<>(stock);
         for (Stock item : copiedStock) {
 
-            if (originalStock.getName() == item.getName()) {
+            if (originalStock.getName().equals(item.getName())) {
                 quantity =  item.getQuantity();
                 item.setBasket(null);
                 DBHelper.save(item);
