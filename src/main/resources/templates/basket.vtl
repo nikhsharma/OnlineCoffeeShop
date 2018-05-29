@@ -11,7 +11,7 @@
     <tr>
         <td>$item.getDescription()</td>
         <td>$item.getQuantity()</td>
-        <td>$item.getPrice()</td>
+        <td>$item.prettyPrice()</td>
         <td>
             <form action="/basket/remove/$item.getId()" method="post">
                 <input type="submit" class="button" value="Remove Item">

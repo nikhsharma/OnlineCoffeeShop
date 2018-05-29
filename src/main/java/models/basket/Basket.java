@@ -155,4 +155,8 @@ public class Basket {
         }
 
     }
+
+    public String prettyPrice(){
+        return String.format("£" + "%.2f" + getTotal());
+    }
 }

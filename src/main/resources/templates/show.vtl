@@ -1,7 +1,7 @@
 <div class="item_description">
     <p>$item.getName()</p>
     <p>$item.getDescription()</p>
-    <p>$item.getPrice()</p>
+    <p>$item.prettyPrice()</p>
     <p>$item.getQuantity()</p>
     #if ($user.getClass() == $adminClass)
     <a href="/stock-management/$item.getId()/edit"> <input type="submit" value="edit" class="button"> </a>
