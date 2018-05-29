@@ -13,12 +13,14 @@ public class CustomerTest {
 
    Customer customer;
    private Stock stock;
+   Stock stock2;
    Order order;
 
     @Before
     public void before() {
         customer = new Customer("Bob", "808");
         stock = new Stock("java","Java beans", StockType.COFFEE, 10.00, 5);
+        stock2 = new Stock("java","Java beans", StockType.COFFEE, 10.00, 0);
     }
 
 
@@ -27,6 +29,11 @@ public class CustomerTest {
     public void canAddItemToCustomersBasket() {
         customer.addToBasket(stock, 2);
         assertEquals(1, customer.stockInBasketCount());
+
+    } @Test
+    public void cannotAddItemToCustomersBasket() {
+        customer.addToBasket(stock2, 0);
+        assertEquals(0, customer.stockInBasketCount());
     }
 
     @Test
