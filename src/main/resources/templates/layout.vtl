@@ -11,27 +11,32 @@
 <body>
     <nav>
         <ul>
-            <li>
-                <a href="/">Home</a>
+            <li class="home">
+                <a href="/">HOME</a>
             </li>
-            <li>
-                <a href="/coffee">Coffee</a>
+            <li class="coffee">
+                <a href="/coffee">COFFEE</a>
             </li>
-            <li>
-                <a href="/equipment">Equipment</a>
+            <li class="equipment">
+                <a href="/equipment">EQUIPMENT</a>
             </li>
-            <li>
-                <a href="/misc">Misc</a>
+            <li class="misc">
+                <a href="/misc">MISC</a>
             </li>
-            <li>
-                #if ($user)
-                <a href="/account">My Account</a>
+            <li class="endlink">
+                #if($user.getClass() == $customerClass)
+                <a href="/account">MY ACCOUNT</a>
+                #elseif($user.getClass() == $adminClass)
+                <a href="/stock-management">STOCK MANAGEMENT</a>
                 #else
-                <a href="/login">Login</a>
+                <a href="/login">LOGIN</a>
                 #end
-
-
             </li>
+            #if($user.getClass() == $customerClass)
+            <li>
+                <a href="/basket">MY BASKET</a>
+            </li>
+            #end
         </ul>
     </nav>
     #parse($template)

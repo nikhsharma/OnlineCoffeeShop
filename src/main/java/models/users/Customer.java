@@ -1,9 +1,11 @@
 package models.users;
 
+import db.DBCustomer;
 import db.DBHelper;
 import models.basket.Basket;
 import models.stock.Order;
 import models.stock.Stock;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -28,7 +30,7 @@ public class Customer extends User {
     }
 
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     public Set<Order> getPurchaseHistory() {
         return purchaseHistory;
     }
@@ -54,6 +56,7 @@ public class Customer extends User {
         Stock stockToAdd = new Stock(stock.getDescription(), stock.getType(), stock.getPrice(), quantity);
         stockToAdd.setBasket(this.basket);
         DBHelper.save(stockToAdd);
+//        DBCustomer.showCustomersBasket(this).addStock(stockToAdd);
         this.basket.addStock(stockToAdd);
         stock.setQuantity(stock.getQuantity() - quantity);
     }

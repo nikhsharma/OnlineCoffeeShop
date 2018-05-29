@@ -45,4 +45,10 @@ public class CustomerTest {
         assertEquals(1, customer.getPurchaseHistory().size());
         assertEquals(0, customer.stockInBasketCount());
     }
+
+    @Test
+    public void canCalculateTotal(){
+        customer.addToBasket(stock, 2);
+        assertEquals(20.00, customer.getBasket().calculateTotal(), 0.1);
+    }
 }
