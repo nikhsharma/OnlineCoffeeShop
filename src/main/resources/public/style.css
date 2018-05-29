@@ -217,8 +217,17 @@ nav ul a {
 
 }
 
+.create-button{
+text-align: left;
+border-radius: 10%;
+border: 1px, solid red;
+width: 60px;
+height: 60px;
+
+}
+
 .table-header {
-    font-size: 24px;
+
 }
 
 .table-data {

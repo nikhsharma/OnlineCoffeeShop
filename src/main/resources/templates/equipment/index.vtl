@@ -6,7 +6,7 @@
     #foreach ($e in $equipment)
     <div class="single_item" style="background-image: url($e.getImage())">
         <p>$e.getName()</p>
-        <p>$e.getPrice()</p>
+        <p>$e.prettyPrice()</p>
         <a href="/equipment/$e.getId()">Show More</a>
     </div>
     #end

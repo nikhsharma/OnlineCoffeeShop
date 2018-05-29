@@ -5,7 +5,7 @@
     #foreach ($c in $coffee)
     <div class="single_item" style="background-image: url($c.getImage())">
         <p>$c.getName()</p>
-        <p>$c.getPrice()</p>
+        <p>$c.prettyPrice()</p>
         <a href="/coffee/$c.getId()">Show More</a>
     </div>
     #end

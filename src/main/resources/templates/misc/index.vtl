@@ -5,7 +5,7 @@
     #foreach ($m in $misc)
     <div class="single_item" style="background-image: url($m.getImage())">
         <p>$m.getName()</p>
-        <p>$m.getPrice()</p>
+        <p>$m.prettyPrice()</p>
         <a href="/misc/$m.getId()">Show More</a>
     </div>
     #end

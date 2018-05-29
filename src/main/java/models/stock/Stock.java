@@ -143,4 +143,9 @@ public class Stock {
     public void setOrder(Order order) {
         this.order = order;
     }
+
+    public String prettyPrice() {
+        return String.format("£" + "%.2f", this.price);
+
+    }
 }
