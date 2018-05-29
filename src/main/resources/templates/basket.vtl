@@ -23,9 +23,9 @@
         <td></td>
         <td>Total :</td>
         #if ($basket.checkIfDiscountOnTotalCanBeOffered())
-        <td><strike>£$basket.calculateTotal() </strike> $prettyPrice</td>
+        <td><strike>£$basket.calculateTotal() </strike> $discountedPrettyPrice</td>
         #else
-        <td>$basket.calculateTotal()</td>
+        <td>$prettyPrice</td>
         #end
         <td>
             <form action="/basket/purchase" method="post">
