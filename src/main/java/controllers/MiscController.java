@@ -27,7 +27,7 @@ public class MiscController {
             List<Stock> allStock = DBHelper.getAll(Stock.class);
             List<Stock> misc = new ArrayList<>();
             for (Stock item : allStock) {
-                if (item.getType() == StockType.MISC) {
+                if ((item.getType() == StockType.MISC) && (item.getBasket() == null) && (item.getOrder() == null)) {
                     misc.add(item);
                 }
             }

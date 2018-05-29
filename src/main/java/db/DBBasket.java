@@ -29,4 +29,15 @@ public class DBBasket {
         }
         return stockInBasket;
     }
+
+    public static Stock findStockToRemove(Stock stock) {
+        List<Stock> items = DBHelper.getAll(Stock.class);
+        Stock foundItem = null;
+        for (Stock item : items) {
+            if ((item.getDescription().equals(stock.getDescription())) && item.getId() != stock.getId()) {
+                foundItem = item;
+            }
+        }
+        return foundItem;
+    }
 }
