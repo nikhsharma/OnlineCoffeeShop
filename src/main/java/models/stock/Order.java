@@ -12,10 +12,12 @@ public class Order {
     private int id;
     private Set<Stock> purchases;
     private Customer customer;
+    private double total;
 
     public Order(Customer customer) {
         this.purchases = null;
         this.customer = customer;
+        this.total = total;
     }
 
     public Order() {
@@ -39,6 +41,14 @@ public class Order {
         return copy;
     }
 
+    public double calculateTotal(){
+        for (Stock item : purchases) {
+            total = item.getQuantity() + item.getPrice();
+        }
+            return total;
+    }
+
+
     public void setPurchases(Set<Stock> purchases) {
         this.purchases = purchases;
     }
@@ -52,4 +62,6 @@ public class Order {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+
 }
