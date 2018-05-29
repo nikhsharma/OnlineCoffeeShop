@@ -78,7 +78,7 @@ public class Stock {
     public boolean isAvailability() {
         return availability;
     }
-
+    @Column(name="image")
     public String getImage() {
         return image;
     }

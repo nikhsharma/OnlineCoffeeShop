@@ -53,7 +53,8 @@ public class AdminController {
             String type = req.queryParams("type");
             double price = Double.parseDouble(req.queryParams("price"));
             int quantity = Integer.parseInt(req.queryParams("quantity"));
-            Stock stock = new Stock(name, description, stockType, price, quantity);
+            String image = req.queryParams("image");
+            Stock stock = new Stock(name, description, stockType, price, quantity, image);
             DBHelper.save(stock);
             res.redirect("/stock-management");
             return null;
@@ -86,11 +87,13 @@ public class AdminController {
             String type = req.queryParams("type");
             double price = Double.parseDouble(req.queryParams("price"));
             int quantity = Integer.parseInt(req.queryParams("quantity"));
+            String image = req.queryParams("image");
             stock.setName(name);
             stock.setDescription(description);
             stock.setType(stockType);
             stock.setPrice(price);
             stock.setQuantity(quantity);
+            stock.setImage(image);
             DBHelper.save(stock);
             res.redirect("/stock-management");
             return null;
