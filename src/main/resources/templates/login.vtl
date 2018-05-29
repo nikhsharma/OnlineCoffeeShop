@@ -1,10 +1,6 @@
-<form action="/login" method="post">
+<h1>Login</h1>
+<form action="/login" method="post" class="login-form">
     <label for="username">Your username: </label>
     <input type="text" name="username" id="username">
-    <button type="submit">Submit name</button>
+    <button type="submit">Submit Username</button>
 </form>
-
-#foreach ($user in $users)
-<p>$user.getName()</p>
-<p>$user.getUsername()</p>
-#end
