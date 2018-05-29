@@ -324,5 +324,7 @@ textarea {
     background-size: cover;
     color: white;
     height: 94vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    background-blend-mode: darken;
 }
 
