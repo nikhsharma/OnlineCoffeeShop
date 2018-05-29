@@ -244,13 +244,12 @@ margin-left: 10vw;
 /*    STOCK-MANAGEMENT   */
 
 
-.table {
+.table, .basket-table {
     padding: 10px;
     display: flex;
     flex-direction: column;
     text-align: left;
     all_items: center;
-
 
 }
 
@@ -325,4 +324,6 @@ textarea {
     color: white;
     height: 94vh;
 }
+
+
 

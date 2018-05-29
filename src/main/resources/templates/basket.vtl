@@ -1,15 +1,15 @@
 
 #if ($basket.getStock().size() != 0)
-
+<div class="basket-table">
 <table>
     <tr>
-        <th>Description</th>
+        <th>Name</th>
         <th>Quantity</th>
         <th>Price</th>
     </tr>
     #foreach ($item in $basket.getStock())
     <tr>
-        <td>$item.getDescription()</td>
+        <td>$item.getName()</td>
         <td>$item.getQuantity()</td>
         <td>$item.prettyPrice()</td>
         <td>
@@ -35,7 +35,7 @@
     </tr>
 
 </table>
-
+</div>
 
 #else
     <h1>Your basket is empty :(</h1>
