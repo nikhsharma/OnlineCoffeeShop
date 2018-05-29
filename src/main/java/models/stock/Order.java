@@ -33,7 +33,7 @@ public class Order {
     }
 
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
     public Set<Stock> getPurchases() {
         Set<Stock> copy = new HashSet<>(purchases);
         return copy;
