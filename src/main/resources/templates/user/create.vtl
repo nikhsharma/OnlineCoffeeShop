@@ -1,10 +1,13 @@
-
-<form action="/stock-management" method="post">
+<div class="form">
+<form class="create-form" action="/stock-management" method="post" id="form">
 
     <label for="name">Name:</label>
     <input type="text" id="name" name="name">
-<label for="description">Description:</label>
-<input type="text" id="description" name="description">
+
+    <label for="description">Description:</label>
+    <textarea form="form" id="description" name="description" required="true" value="$stock.getDescription()">
+    </textarea>
+
 
     <label for="type">Type:</label>
     <select name="type" id="type">
@@ -25,4 +28,5 @@
 
 <input type="submit" value="save" class="button">
 </form>
+</div>
 

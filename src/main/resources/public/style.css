@@ -171,17 +171,44 @@ nav ul a {
     text-align: left;
     all_items: center;
 
+
 }
 
 .table-header {
-    font-size: 36px;
+    font-size: 24px;
 }
 
 .table-data {
-    font-family: monospace;
-     border-bottom: 1px solid #808000;
+     border-bottom: groove 1px ;
+;
 
 }
+
+
+/*          CREATE.VTL FOR ADMIN        */
+.create-form {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    width; 50px;
+}
+
+.create-form input{
+    margin: 5px;
+}
+
+textarea {
+  vertical-align: top;
+  margin: 5px
+}
+
+.create-form submit {
+    margin: 5px;
+}
+
 
  /*       ACCOUNT       */
 
