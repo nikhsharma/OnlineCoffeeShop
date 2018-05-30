@@ -1,6 +1,6 @@
 
-
-<form action="/stock-management/$stock.getId()/edit" method="post" id="form">
+<div class = "form">
+<form class="update-form" action="/stock-management/$stock.getId()/edit" method="post" id="form">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required="true" value="$stock.getName()">
 
@@ -29,11 +29,12 @@
     <label for="image">Image:</label>
     <input type="url" id="image" name="image" value="$stock.getImage()">
 
-
-    <input type="submit" value="Save" class="button">
+    <input type="submit" value="Save" class="update-button">
 
 </form>
+</div>
 
 <form action="/stock-management/$stock.getId()/delete" method="post">
     <input type="submit" value="Delete" class="button">
 </form>
+

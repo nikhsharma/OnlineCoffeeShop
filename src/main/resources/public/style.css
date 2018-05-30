@@ -301,6 +301,20 @@ textarea {
 }
 
 
+/*     EDIT FOR ADMIN     */
+.update-form {
+    padding: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width; 40px;
+}
+
+.update-form input{
+    margin: 5px;
+}
+
+
  /*       ACCOUNT       */
 
  .orders-left {
