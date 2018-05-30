@@ -35,9 +35,22 @@ nav ul a {
 }
 
 nav li {
-    padding: 2vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
     margin: 0;
-    width: auto;
+}
+
+nav a {
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    margin:0;
+}
+
+nav li:hover {
+    background-color: saddlebrown;
+    color: white;
+    transition: 0.3s;
 }
 
 
@@ -337,7 +350,6 @@ textarea {
     flex-direction: column;
  }
 .single-order {
-        height: 10vw;
         width: 50vw;
         border: 1px solid black;
         display: flex;

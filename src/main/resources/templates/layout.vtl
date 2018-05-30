@@ -20,9 +20,10 @@
             <a href="/equipment"><li class="equipment">
                 EQUIPMENT
             </li></a>
-            <li class="misc">
-                <a href="/misc">MISC</a>
-            </li>
+
+            <a href="/misc"><li class="misc">
+                MISC
+            </li></a>
 
             #if($user.getClass() == $customerClass)
             <a href="/account">
@@ -45,14 +46,14 @@
             #end
 
             #if($user.getClass() == $customerClass)
-            <li>
-                <a href="/basket">MY BASKET</a>
-            </li>
+            <a href="/basket"><li>
+                MY BASKET
+            </li></a>
             #end
             #if ($user)
-            <li>
-                <a href="/logout">LOGOUT</a>
-            </li>
+            <a href="/logout"><li>
+                LOGOUT
+            </li></a>
             #end
         </ul>
     </nav>
