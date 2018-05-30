@@ -41,7 +41,7 @@ public class Seeds {
 //        misc stock
         Stock stock11 = new Stock("Cup", "Comdey Cup", StockType.MISC, 6.00, 30, "http://www.mugs.coffee/wp-content/uploads/2016/04/lick_cutecoffeemug2.jpg");
         Stock stock12 = new Stock("Travel Cup", "A wiery travel cup", StockType.MISC, 10.00, 50, "http://www.asuntospublicos.org/upload/2018/05/06/travelling-mug-coffee-kingdom-travel-espresso-mug-l-4e18276ab9be78a7.jpg");
-        Stock stock13 = new Stock("Cookie Monster Cup", "A cops mist trusted tool", StockType.MISC, 8.00, 5, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRq5h-LWaMqmbj9YE86W9jr2ZVGAjTRujoCtB8cEFJgFQNyd_r");
+        Stock stock13 = new Stock("Cookie Monster Cup", "A cops must trusted tool", StockType.MISC, 8.00, 5, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRq5h-LWaMqmbj9YE86W9jr2ZVGAjTRujoCtB8cEFJgFQNyd_r");
         Stock stock14 = new Stock("Inappropriate Cup", "Speaks for itself", StockType.MISC, 5.00, 0, "https://media1.popsugar-assets.com/files/thumbor/Ox2sJ5RS7kqDo2AJ_DjHPjcUXso/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2015/11/20/752/n/1922195/7a1965a9_edit_img_image_26123565_1416516929_sq/i/Gifts-Coffee-Lovers-Under-60.jpg");
        DBHelper.save(stock11);
        DBHelper.save(stock12);
