@@ -9,16 +9,17 @@
             <th>Item</th>
             <th>Quantity</th>
             <th>Price</th>
+            <th>Total Cost</th>
         </tr>
         #foreach ($purchase in $order.getPurchases())
         <tr>
             <td>$purchase.getName()</td>
             <td>$purchase.getQuantity()</td>
             <td>$purchase.prettyPrice()</td>
-        </tr>
         #end
         <td>$order.calculateTotal()</td>
         #end
+        </tr>
     </table>
     #else
     <h1>You have no previous orders :(</h1>
