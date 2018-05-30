@@ -327,29 +327,38 @@ textarea {
 /*      BASKET  */
 
 .basket-table {
-  display: flex;
-  padding: 50px;
+    display: flex;
+    padding: 50px;
     justify-content: center;
-  align-items; center;
-  text-align: left;
+    align-items; center;
+    text-align: left;
 }
 
 th, td {
-padding: 3px;
-
+    padding: 10px;
+    text-align: center;
 }
+
+.borderbottom {
+    border-bottom: 1px dashed black;
+}
+
+th {
+    font-size: 2res;
+}
+
 
 .basket-total{
 
-display: flex;
-justify-content: right;
+    display: flex;
+    justify-content: right;
 }
 
-basket.image {
-   height: 60vh;
-    width: 40vw;
+.basket-image {
+    height: 20vh;
+    width: 20vh;
     background-size: cover;
-
+    background-position: center;
 }
 
 

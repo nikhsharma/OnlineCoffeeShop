@@ -2,18 +2,19 @@
 #if ($basket.getStock().size() != 0)
 <div class="basket-table">
 <table>
-    <tr>
+    <tr class="borderbottom">
 
+        <th></th>
         <th>Name</th>
         <th>Quantity</th>
         <th>Price</th>
     </tr>
     #foreach ($item in $basket.getStock())
     <tr>
-        <div class="basket-image"><td class = "table-data"><img src="$item.getImage()"></td> </div>
-        <td class = "table-data">$item.getName()</td>
-        <td class = "table-data">$item.getQuantity()</td>
-        <td class = "table-data">$item.prettyPrice()</td>
+        <td class = "table-data borderbottom"><div class="basket-image" style="background-image: url($item.getImage())"></div></td>
+        <td class = "table-data borderbottom">$item.getName()</td>
+        <td class = "table-data borderbottom">$item.getQuantity()</td>
+        <td class = "table-data borderbottom">$item.prettyPrice()</td>
         <td class = "table-data">
             <form action="/basket/remove/$item.getId()" method="post">
                 <input type="submit" class="button" value="Remove Item">
@@ -28,7 +29,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td class = "table-data">Total:
+                <td class = "table-data borderbottom">Total:
                 #if ($basket.checkIfDiscountOnTotalCanBeOffered())
                 <strike>$prettyPrice </strike> $discountedPrettyPrice
                 #else
