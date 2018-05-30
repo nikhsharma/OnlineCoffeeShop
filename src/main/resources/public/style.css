@@ -24,7 +24,6 @@ nav ul {
     display: flex;
     justify-content: space-around;
     list-style-type: none;
-    padding:2vh;
     margin:0;
 }
 
@@ -34,6 +33,14 @@ nav ul a {
     margin:0;
     color: darkslategray;
 }
+
+nav li {
+    padding: 2vh;
+    margin: 0;
+    width: auto;
+}
+
+
 
 
 
@@ -174,8 +181,18 @@ a {
 /*        SHOW       */
 
 .item-content {
+height: 94vh;
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.item-content p, .item-content form {
+    margin-left: 10vw;
+}
+
+.item-content h1, .item-content p {
+    padding-bottom: 5vh;
 }
 
 
@@ -189,6 +206,7 @@ a {
 .item_description {
 width: 40vw;
 margin-left: 10vw;
+font-size: 1.5rem;
 }
 
 
@@ -342,25 +360,35 @@ textarea {
 /*      BASKET  */
 
 .basket-table {
-  display: flex;
-  padding: 50px;
-   justify-content: center;
-  align-items; center;
-  text-align: left;
+    display: flex;
+    padding: 50px;
+    justify-content: center;
+    align-items; center;
+    text-align: left;
 }
 
 th, td {
-padding: 3px;
-
+    padding: 10px;
+    text-align: center;
 }
+
+.borderbottom {
+    border-bottom: 1px dashed black;
+}
+
 
 .basket-total{
 
-display: flex;
-justify-content: right;
+    display: flex;
+    justify-content: right;
 }
 
-
+.basket-image {
+    height: 20vh;
+    width: 20vh;
+    background-size: cover;
+    background-position: center;
+}
 
 
 
