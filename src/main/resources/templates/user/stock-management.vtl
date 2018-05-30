@@ -13,17 +13,18 @@
 
 
     #foreach($item in $stock)
+    #if(($item.getOrder() == $null) && ($item.getBasket() == $null))
     <tr>
         <div >
-        <td class="table-data">$item.getName()</td>
+            <td class="table-data">$item.getName()</td>
         <td class="table-data">$item.getDescription()</td>
         <td class="table-data">$item.getType()</td>
         <td class="table-data">$item.prettyPrice()</td>
         <td class="table-data">$item.getQuantity()</td>
         <td class="table-data"> <a href="/stock-management/$item.getId()/edit"> <input type="submit" value="edit" class="button"> </a> </td>
-        <!--<td>This needs to be a button to take the user to a new page to update the stock</td>-->
         </div>
     </tr>
+    #end
     #end
 
 </table>
