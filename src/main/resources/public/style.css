@@ -26,6 +26,7 @@ nav ul {
     justify-content: space-around;
     list-style-type: none;
     margin:0;
+    padding: 0;
 }
 
 nav ul a {
@@ -39,6 +40,7 @@ nav li {
     padding-top: 2vh;
     padding-bottom: 2vh;
     margin: 0;
+    padding-left: 0;
 }
 
 nav a {
