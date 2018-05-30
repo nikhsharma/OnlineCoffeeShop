@@ -343,13 +343,20 @@ textarea {
 
 th, td {
 padding: 3px;
-border-bottom: white solid 1px;
+
 }
 
 .basket-total{
 
 display: flex;
 justify-content: right;
+}
+
+basket.image {
+   height: 60vh;
+    width: 40vw;
+    background-size: cover;
+
 }
 
 

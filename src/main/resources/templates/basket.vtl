@@ -3,14 +3,14 @@
 <div class="basket-table">
 <table>
     <tr>
-        <th>Image</th>
+
         <th>Name</th>
         <th>Quantity</th>
         <th>Price</th>
     </tr>
     #foreach ($item in $basket.getStock())
     <tr>
-        <td class = "table-data"><img src="$item.getImage()"></td>
+        <div class="basket-image"><td class = "table-data"><img src="$item.getImage()"></td> </div>
         <td class = "table-data">$item.getName()</td>
         <td class = "table-data">$item.getQuantity()</td>
         <td class = "table-data">$item.prettyPrice()</td>
