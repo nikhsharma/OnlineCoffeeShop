@@ -24,7 +24,6 @@ nav ul {
     display: flex;
     justify-content: space-around;
     list-style-type: none;
-    padding:2vh;
     margin:0;
 }
 
@@ -34,6 +33,14 @@ nav ul a {
     margin:0;
     color: darkslategray;
 }
+
+nav li {
+    padding: 2vh;
+    margin: 0;
+    width: auto;
+}
+
+
 
 
 
