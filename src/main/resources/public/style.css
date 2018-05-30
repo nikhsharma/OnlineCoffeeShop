@@ -2,7 +2,9 @@
 
 body {
     font-family: 'roboto', sans-serif;
-    background-color: aliceblue;
+    background-image: url("https://organicfit.tv/wp-content/uploads/2018/01/pexels-photo-2.jpg");
+    background-color: rgba(255, 255, 255, 0.9);
+    background-blend-mode: lighten;
     padding:0;
     margin:0;
 }
@@ -334,13 +336,20 @@ textarea {
 
 th, td {
 padding: 3px;
-border-bottom: white solid 1px;
+
 }
 
 .basket-total{
 
 display: flex;
 justify-content: right;
+}
+
+basket.image {
+   height: 60vh;
+    width: 40vw;
+    background-size: cover;
+
 }
 
 

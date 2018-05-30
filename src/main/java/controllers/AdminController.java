@@ -24,6 +24,7 @@ public class AdminController {
             List<Stock> stock = DBHelper.getAll(Stock.class);
             HashMap<String, Object> model = new HashMap<>();
             model.put("stock", stock);
+            model.put("null", null);
             model.put("user", req.session().attribute("user"));
             model.put("customerClass", Customer.class);
             model.put("adminClass", Admin.class);
