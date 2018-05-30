@@ -292,8 +292,7 @@ padding: 10px
 .create-form {
     padding: 50px;
     display: flex;
-    flex-direction: column;
-    background-color: white;
+    flex-direction: row;;
     justify-content: center;
     align-items: center;
     width; 50px;
@@ -311,6 +310,22 @@ textarea {
 .create-form submit {
     margin: 5px;
 }
+
+
+/*     EDIT FOR ADMIN     */
+.update-form {
+    padding: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width; 40px;
+}
+
+.update-form input{
+    margin: 3px;
+}
+
+
 
 
  /*       ACCOUNT       */
