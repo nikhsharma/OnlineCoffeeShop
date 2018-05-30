@@ -5,42 +5,55 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Online Coffee Shop</title>
+    <title>{Java.update();}</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <nav>
         <ul>
-            <li class="home">
-                <a href="/">HOME</a>
-            </li>
-            <li class="coffee">
-                <a href="/coffee">COFFEE</a>
-            </li>
-            <li class="equipment">
-                <a href="/equipment">EQUIPMENT</a>
-            </li>
-            <li class="misc">
-                <a href="/misc">MISC</a>
-            </li>
-            <li class="endlink">
-                #if($user.getClass() == $customerClass)
-                <a href="/account">MY ACCOUNT</a>
-                #elseif($user.getClass() == $adminClass)
-                <a href="/stock-management">STOCK MANAGEMENT</a>
-                #else
-                <a href="/login">LOGIN</a>
-                #end
-            </li>
+            <a href="/"><li class="home">
+                HOME
+            </li></a>
+            <a href="/coffee"><li class="coffee">
+                COFFEE
+            </li></a>
+            <a href="/equipment"><li class="equipment">
+                EQUIPMENT
+            </li></a>
+
+            <a href="/misc"><li class="misc">
+                MISC
+            </li></a>
+
             #if($user.getClass() == $customerClass)
-            <li>
-                <a href="/basket">MY BASKET</a>
-            </li>
+            <a href="/account">
+            <li class="endlink">
+                MY ACCOUNT
+            </li></a>
+
+            #elseif($user.getClass() == $adminClass)
+            <a href="/stock-management">
+            <li class="endlink">
+                STOCK MANAGEMENT
+            </li></a>
+
+
+            #else
+            <a href="/login">
+                <li class="endlink">
+                    LOGIN
+                </li></a>
+            #end
+
+            #if($user.getClass() == $customerClass)
+            <a href="/basket"><li>
+                MY BASKET
+            </li></a>
             #end
             #if ($user)
-            <li>
-                <a href="/logout">LOGOUT</a>
-            </li>
+            <a href="/logout"><li>
+                LOGOUT
+            </li></a>
             #end
         </ul>
     </nav>

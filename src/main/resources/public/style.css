@@ -1,11 +1,14 @@
 /*       LAYOUT       */
 
 body {
-    font-family: 'roboto', sans-serif;
-    background-color: aliceblue;
+    font-family: "roboto" sans-serif;
+    background-image: url("https://organicfit.tv/wp-content/uploads/2018/01/pexels-photo-2.jpg");
+    background-color: rgba(255, 255, 255, 0.9);
+    background-blend-mode: lighten;
     padding:0;
     margin:0;
 }
+
 
 h1 {
     text-align: center;
@@ -22,7 +25,6 @@ nav ul {
     display: flex;
     justify-content: space-around;
     list-style-type: none;
-    padding:2vh;
     margin:0;
 }
 
@@ -32,6 +34,27 @@ nav ul a {
     margin:0;
     color: darkslategray;
 }
+
+nav li {
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    margin: 0;
+}
+
+nav a {
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    margin:0;
+}
+
+nav li:hover {
+    background-color: saddlebrown;
+    color: white;
+    transition: 0.3s;
+}
+
+
 
 
 
@@ -119,17 +142,33 @@ nav ul a {
 /*       INDEX       */
 .all_items {
     display: flex;
-    justify-content: center;
+        flex-wrap: wrap;
+
 }
 
 .single_item {
-    height: 20vw;
-    width: 20vw;
-    border: 1px solid black;
+    height: 25vw;
+    width: 25vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-size: cover;
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: darken;
+    color: white;
+    transition: 0.3s;
+}
+
+.single_item:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+
+}
+
+a {
+    text-decoration: none;
 }
 
 .index_header {
@@ -153,60 +192,201 @@ nav ul a {
 }
 
 
-/*       LOGIN       */
+/*        SHOW       */
 
-.login-form {
+.item-content {
+height: 94vh;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
+.item-content p, .item-content form {
+    margin-left: 10vw;
+}
+
+.item-content h1, .item-content p {
+    padding-bottom: 5vh;
+}
+
+
+.item-image {
+    height: 60vh;
+    width: 40vw;
+    background-size: cover;
+    background-position: center;
+}
+
+.item_description {
+width: 40vw;
+margin-left: 10vw;
+font-size: 1.5rem;
+}
+
+
+/*       LOGIN       */
+
+.login {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: right;
+    width: 50vw;
+    height: 96vh;
+    font-size: 1.5rem;
+        background-color: rgba(0, 0, 0, 0.3);
+        background-blend-mode: darken;
+        color: white;
+        transition: 0.3s;
+}
+
+.login:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.login input {
+    margin: 10px;
+    padding: 5px;
+    background-blend-mode: lighten;
+    font-size: 1.2rem;
+}
+
+.login-left {
+    border-right: 1px solid black;
+}
+
+.login-sign-up {
+    display: flex;
+    justify-content: center;
+    background-image: url("https://organicfit.tv/wp-content/uploads/2018/01/pexels-photo-2.jpg");
+    background-size: cover;
+}
 
 /*    STOCK-MANAGEMENT   */
 
 
 .table {
+    padding: 10px;
+    margin: 1px;
     display: flex;
     flex-direction: column;
     text-align: left;
     all_items: center;
 
+
+}
+
+.create-button{
+padding 50px;
+text-align: left;
+border-radius: 10%;
+border: 1px, solid red;
+
+height: 20px;
+
 }
 
 .table-header {
-    font-size: 36px;
+    padding: 5px;
 }
 
 .table-data {
-    font-family: monospace;
-     border-bottom: 1px solid #808000;
+padding: 10px
+     border-bottom: white solid 1px ;
+;
 
 }
 
+
+/*          CREATE.VTL FOR ADMIN        */
+.create-form {
+    padding: 50px;
+    display: flex;
+    flex-direction: row;;
+    justify-content: center;
+    align-items: center;
+    width; 50px;
+}
+
+.create-form input{
+    margin: 5px;
+}
+
+textarea {
+  vertical-align: top;
+  margin: 5px
+}
+
+.create-form submit {
+    margin: 5px;
+}
+
+
+/*     EDIT FOR ADMIN     */
+.update-form {
+    padding: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width; 40px;
+}
+
+.update-form input{
+    margin: 3px;
+}
+
+
+
+
  /*       ACCOUNT       */
 
- .orders-left {
-    float:left;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
- }
 .single-order {
-        height: 10vw;
-        width: 50vw;
-        border: 1px solid black;
+        margin: 5px;
+        border-bottom: 3px solid white;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
 }
-.orders-right {
-    float: right;
-    width: 48vw;
-    text-align: center;
-    background-image: url("https://organicfit.tv/wp-content/uploads/2018/01/pexels-photo-2.jpg");
-    background-size: cover;
-    color: white;
-    height: 94vh;
+
+
+/*      BASKET  */
+
+.basket-table {
+    display: flex;
+    padding: 50px;
+    justify-content: center;
+    align-items; center;
+    text-align: left;
 }
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+.borderbottom {
+    border-bottom: 1px dashed black;
+}
+
+
+.basket-total{
+
+    display: flex;
+    justify-content: right;
+}
+
+.basket-image {
+    height: 20vh;
+    width: 20vh;
+    background-size: cover;
+    background-position: center;
+}
+
+
 

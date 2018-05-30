@@ -4,10 +4,11 @@
 
 <div class="all_items">
     #foreach ($e in $equipment)
-    <div class="single_item">
-        <p>$e.getName()</p>
-        <p>$e.getPrice()</p>
-        <a href="/equipment/$e.getId()">Show More</a>
+    <a href="/equipment/$e.getId()">
+    <div class="single_item" style="background-image: url($e.getImage())">
+        <h1>$e.getName()</h1>
+        <p>$e.prettyPrice()</p>
     </div>
+    </a>
     #end
 </div>

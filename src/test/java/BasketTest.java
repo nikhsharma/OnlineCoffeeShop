@@ -94,7 +94,7 @@ public class BasketTest {
     public void cannotApplyTenPercentDiscountOnTotalBasket(){
         basket.addStock(stock);
         basket.applyTenPercentDiscount();
-        assertEquals(50.00, basket.calculateTotal(), 0.1);
+        assertEquals("£50.00", basket.calculateTotal());
     }
     @Test
     public void canBuyOneGetOneFree(){

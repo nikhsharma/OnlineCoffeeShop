@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="stock")
+@Table(name = "stock")
 public class Stock {
 
     private int id;
@@ -22,7 +22,6 @@ public class Stock {
     private Basket basket;
     private Order order;
     private String image;
-
 
 
     public Stock() {
@@ -39,6 +38,7 @@ public class Stock {
         this.availability = checkAvailability();
         this.image = image;
     }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -50,7 +50,7 @@ public class Stock {
         this.id = id;
     }
 
-    @Column(name="name")
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -78,7 +78,8 @@ public class Stock {
     public boolean isAvailability() {
         return availability;
     }
-    @Column(name="image")
+
+    @Column(name = "image")
     public String getImage() {
         return image;
     }
@@ -87,7 +88,7 @@ public class Stock {
         this.image = image;
     }
 
-    @Column(name="price")
+    @Column(name = "price")
     public double getPrice() {
         return price;
     }
@@ -106,7 +107,7 @@ public class Stock {
 
 
     @ManyToOne
-    @JoinColumn(name="basket_id")
+    @JoinColumn(name = "basket_id")
     public Basket getBasket() {
         return basket;
     }
@@ -115,7 +116,7 @@ public class Stock {
         this.basket = basket;
     }
 
-    @Column(name="availability")
+    @Column(name = "availability")
     public boolean getAvailability() {
         return availability;
     }
@@ -127,7 +128,7 @@ public class Stock {
     public boolean checkAvailability() {
         if (this.quantity <= 0) {
             setAvailability(false);
-             getAvailability();
+            getAvailability();
         } else {
             setAvailability(true);
         }
@@ -142,5 +143,10 @@ public class Stock {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public String prettyPrice() {
+        return String.format("£" + "%.2f", this.price);
+
     }
 }

@@ -56,9 +56,7 @@ public class Customer extends User {
         Stock stockToAdd = new Stock(stock.getName(), stock.getDescription(), stock.getType(), stock.getPrice(), quantity, stock.getImage());
         if (stock.getAvailability() == true) {
             stockToAdd.setBasket(this.basket);
-
             DBHelper.save(stockToAdd);
-//        DBCustomer.showCustomersBasket(this).addStock(stockToAdd);
             this.basket.addStock(stockToAdd);
             stock.setQuantity(stock.getQuantity() - quantity);
         }
@@ -69,11 +67,6 @@ public class Customer extends User {
     }
 
     public void purchase() {
-//        Order orderMade = new Order(this.basket.sell());
-//        orderMade.setCustomer(this);
-//        this.purchaseHistory.add(orderMade);
-//        DBHelper.save(orderMade);
-//        this.purchaseHistory.add(orderMade);
         this.basket.sell(this);
     }
 
@@ -83,7 +76,4 @@ public class Customer extends User {
             DBHelper.save(stock);
         }
     }
-
-
-
 }

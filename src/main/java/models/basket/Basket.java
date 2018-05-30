@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name="baskets")
+@Table(name = "baskets")
 public class Basket {
 
     private int id;
@@ -43,7 +43,7 @@ public class Basket {
         this.id = id;
     }
 
-    @Column(name="total")
+    @Column(name = "total")
     public double getTotal() {
         return total;
     }
@@ -66,8 +66,8 @@ public class Basket {
     }
 
     public void addStock(Stock stock) {
-                this.stock.add(stock);
-                calculateTotal();
+        this.stock.add(stock);
+        calculateTotal();
     }
 
 
@@ -75,9 +75,8 @@ public class Basket {
         int quantity = 0;
         ArrayList<Stock> copiedStock = new ArrayList<>(stock);
         for (Stock item : copiedStock) {
-
             if (originalStock.getName().equals(item.getName())) {
-                quantity =  item.getQuantity();
+                quantity = item.getQuantity();
                 item.setBasket(null);
                 DBHelper.save(item);
                 stock.remove(item);
@@ -91,8 +90,6 @@ public class Basket {
     public void sell(Customer customer) {
         Set<Stock> copy = new HashSet<>(stock);
         Order newOrder = new Order(customer);
-
-
         this.stock.clear();
 
         for (Stock item : copy) {
@@ -105,7 +102,7 @@ public class Basket {
         customer.addOrderToPurchaseHistory(newOrder);
     }
 
-    @OneToOne(mappedBy = "basket", cascade = CascadeType.PERSIST )
+    @OneToOne(mappedBy = "basket", cascade = CascadeType.PERSIST)
     public Customer getCustomer() {
         return customer;
     }
@@ -154,5 +151,9 @@ public class Basket {
             }
         }
 
+    }
+
+    public String basketPrettyPrice() {
+        return String.format("£" + "%.2f" + getTotal());
     }
 }

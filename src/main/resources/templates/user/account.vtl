@@ -1,24 +1,34 @@
+<div class="orders-right">
+    <h1>Hi, $user.getName(). This is Your account</h1>
+</div>
+
 <div class="orders-left">
     <h1>Previous Orders</h1>
+    #if ($purchaseHistory.size() != 0)
     #foreach ($order in $purchaseHistory)
     <table class="single-order">
         <tr>
             <th>Item</th>
             <th>Quantity</th>
             <th>Price</th>
+            <th>Total Cost</th>
         </tr>
         #foreach ($purchase in $order.getPurchases())
         <tr>
             <td>$purchase.getName()</td>
             <td>$purchase.getQuantity()</td>
-            <td>$purchase.getPrice()</td>
-        </tr>
+            <td>$purchase.prettyPrice()</td>
         #end
         <td>$order.calculateTotal()</td>
         #end
+        </tr>
     </table>
+    #else
+    <h1>You have no previous orders :(</h1>
+    #end
 </div>
 
-<div class="orders-right">
-    <h1>Hi, $user.getName(). This is Your account</h1>
-</div>
+
+
+
+

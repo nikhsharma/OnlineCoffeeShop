@@ -29,14 +29,16 @@ public class BasketController {
             LoginController.getLoggedInUserName(req, res);
             Basket basket = DBCustomer.showCustomersBasket(currentUser);
             HashMap<String, Object> model = new HashMap<>();
+            model.put("user", req.session().attribute("user"));
+            model.put("customerClass", Customer.class);
+            model.put("adminClass", Admin.class);
             model.put("basket", basket);
+            model.put("discountedPrettyPrice", String.format("£" + "%.2f", basket.getDiscountedTotal()));
+            model.put("prettyPrice", String.format("£" + "%.2f", basket.calculateTotal()));
             model.put("template", "templates/basket.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-//        post("/basket/purchase", (req, res) -> {
-//
-//        });
 
 
         post("/basket/remove/:id", (req, res) -> {

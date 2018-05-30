@@ -39,12 +39,15 @@ public class Order {
         return copy;
     }
 
-    public double calculateTotal(){
+    public String calculateTotal() {
         double total = 0;
         for (Stock item : purchases) {
             total += item.getQuantity() * item.getPrice();
         }
-        return total;
+        if (total >= 100.00) {
+            total = total * 0.9;
+        }
+        return String.format("£" + "%.2f", total);
     }
 
 
@@ -61,6 +64,4 @@ public class Order {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
-
-
 }
