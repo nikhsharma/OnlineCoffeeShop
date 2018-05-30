@@ -30,11 +30,12 @@
     <input type="url" id="image" name="image" value="$stock.getImage()">
 
     <input type="submit" value="Save" class="update-button">
+    <form action="/stock-management/$stock.getId()/delete" method="post">
+        <input type="submit" value="Delete" class="update-button">
+    </form>
+
 
 </form>
 </div>
 
-<form action="/stock-management/$stock.getId()/delete" method="post">
-    <input type="submit" value="Delete" class="button">
-</form>
 
