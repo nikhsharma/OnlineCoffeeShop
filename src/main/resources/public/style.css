@@ -274,8 +274,7 @@ padding: 10px
 .create-form {
     padding: 50px;
     display: flex;
-    flex-direction: column;
-    background-color: white;
+    flex-direction: row;;
     justify-content: center;
     align-items: center;
     width; 50px;
@@ -293,6 +292,22 @@ textarea {
 .create-form submit {
     margin: 5px;
 }
+
+
+/*     EDIT FOR ADMIN     */
+.update-form {
+    padding: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width; 40px;
+}
+
+.update-form input{
+    margin: 3px;
+}
+
+
 
 
  /*       ACCOUNT       */
@@ -329,7 +344,7 @@ textarea {
 .basket-table {
   display: flex;
   padding: 50px;
-    justify-content: center;
+   justify-content: center;
   align-items; center;
   text-align: left;
 }
@@ -345,12 +360,7 @@ display: flex;
 justify-content: right;
 }
 
-basket.image {
-   height: 60vh;
-    width: 40vw;
-    background-size: cover;
 
-}
 
 
 
