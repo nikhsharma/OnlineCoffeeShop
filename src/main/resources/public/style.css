@@ -174,8 +174,18 @@ a {
 /*        SHOW       */
 
 .item-content {
+height: 94vh;
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.item-content p, .item-content form {
+    margin-left: 10vw;
+}
+
+.item-content h1, .item-content p {
+    padding-bottom: 5vh;
 }
 
 
@@ -189,6 +199,7 @@ a {
 .item_description {
 width: 40vw;
 margin-left: 10vw;
+font-size: 1.5rem;
 }
 
 
@@ -341,10 +352,6 @@ th, td {
 
 .borderbottom {
     border-bottom: 1px dashed black;
-}
-
-th {
-    font-size: 2res;
 }
 
 
